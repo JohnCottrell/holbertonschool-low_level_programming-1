@@ -1,7 +1,9 @@
-0-preprocessor
-1-compiler
-2-assembler
-3-name
-4-puts.c
-5-printf.c
-6-size.c
+0-preprocessor: runs a C file ($CFILE) through preprocessor only
+1-compiler: runs a C file ($CFILE) through compiler only, resulting in assembly
+2-assembler: runs a C file ($CFILE) through compiler and assembler, but does not link
+3-name: compiles a C file and outputs an executable named cisfun
+4-puts.c: prints a specific line using puts
+5-printf.c: prints a specific line using printf
+6-size.c: prints size of various variable types
+100-intel: generates assembly code, in intel syntax, of C file ($CFILE)
+101-quote.c: prints a line to stderr
