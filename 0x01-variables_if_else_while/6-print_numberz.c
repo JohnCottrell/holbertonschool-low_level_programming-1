@@ -8,10 +8,10 @@
  */
 int main(void)
 {
-	int n;
+	int n = 48;
 
-	for (n = 48; n < 58; n++)
-		putchar(n);
+	while (n < 58)
+		putchar(n++);
 	putchar('\n');
 	return (0);
 }
