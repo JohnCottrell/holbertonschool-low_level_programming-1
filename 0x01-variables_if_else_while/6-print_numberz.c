@@ -8,9 +8,9 @@
  */
 int main(void)
 {
-	int n = 48;
+	int n = 'a';
 
-	while (n < 58)
+	while (n <= 'z')
 		putchar(n++);
 	putchar('\n');
 	return (0);
