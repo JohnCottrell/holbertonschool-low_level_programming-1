@@ -1,7 +1,7 @@
 #include <stdio.h>
 
 /**
- * main - outputs all numbers in base64 system
+ * main - outputs all numbers in base16 system
  *
  * Description: Uses a for loop to putchar all numbers from 0-8
  * then uses another loop to putchar letters a-f
