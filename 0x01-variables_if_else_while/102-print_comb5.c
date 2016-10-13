@@ -9,42 +9,42 @@
  */
 int main(void)
 {
-	int i, ii, j, jj;
+int i, ii, j, jj;
 
-	i = ii = j = '0';
-	jj = '1';
-	while (i <= '9')
+i = ii = j = '0';
+jj = '1';
+while (i <= '9')
+{
+	while (ii < '9')
 	{
-		while (ii < '9')
+		while (j <= '9')
 		{
-			while (j <= '9')
+			while (jj <= '9')
 			{
-				while (jj <= '9')
+				putchar(i);
+				putchar(ii);
+				putchar(' ');
+				putchar(j);
+				putchar(jj);
+				if (i != '9' || j != '9' || ii != '8' || jj != '9')
 				{
-					putchar(i);
-					putchar(ii);
+					putchar(',');
 					putchar(' ');
-					putchar(j);
-					putchar(jj);
-					if (i != '9' || j != '9' || ii != '8' || jj != '9')
-					{
-						putchar(',');
-						putchar(' ');
-					}
-					jj++;
 				}
-				jj = '0';
-				j++;
+				jj++;
 			}
-			ii++;
-			j = i;
-			jj = ii + 1;
+			jj = '0';
+			j++;
 		}
-		i++;
-		ii = '0';
-		jj = '1';
+		ii++;
 		j = i;
+		jj = ii + 1;
 	}
-	putchar('\n');
-	return (0);
+	i++;
+	ii = '0';
+	jj = '1';
+	j = i;
+}
+putchar('\n');
+return (0);
 }
