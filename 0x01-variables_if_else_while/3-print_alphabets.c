@@ -1,7 +1,7 @@
 #include <stdio.h>
 
 /**
- * main - outputs a-z, ten times
+ * main - outputs a-z, then A-Z
  *
  * Description: Uses a for loop and putchar to output a-z and then a new line
  * Return: returns 0

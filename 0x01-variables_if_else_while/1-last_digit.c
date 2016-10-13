@@ -3,7 +3,7 @@
 #include <stdio.h>
 
 /**
- * main - gets random number, tells you if number is >5, 0, <6
+ * main - gets random number, and gets last digit of it
  *
  * Description: uses rand for random number, and divides abs value to get last
  * Return: returns 0

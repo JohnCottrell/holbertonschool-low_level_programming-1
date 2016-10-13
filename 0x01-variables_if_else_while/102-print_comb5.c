@@ -1,49 +1,38 @@
 #include <stdio.h>
 
 /**
- * main - prints 00-99, but prints only smallest combination of two digits
+ * main - returns every of combo two, two digit numbers without repeating
+ * themselves
  *
- * Description: Uses multiple loops to puts all numbers, while ensuring
- * the first number is never larger than the second number
- * Return: returns 0
+ * Return: 0
  */
 int main(void)
 {
-	int i, ii, j, jj;
+	int f, s;
+	int a, b, c, d;
 
-	i = ii = j = '0';
-	jj = '1';
-	while (i <= '9')
+	for (f = 0; f < 100; f++)
 	{
-		while (ii <= '9')
+		a = f / 10;
+		b = f % 10;
+		for (s = 0; s < 100; s++)
 		{
-			while (j <= '9')
+			c = s / 10;
+			d = s % 10;
+			if (a < c || (a == c && b < d))
 			{
-				while (jj <= '9')
+				putchar(a + '0');
+				putchar(b + '0');
+				putchar(' ');
+				putchar(c + '0');
+				putchar(d + '0');
+				if (!(a == 9 && b == 8))
 				{
-					putchar(i);
-					putchar(ii);
-					putchar(' ');
-					putchar(j);
-					putchar(jj);
-					if (i != '9' || j != '9' || ii != '8' || jj != '9')
-					{
-						putchar(',');
-						putchar(' ');
-					}
-					jj++;
+				putchar(',');
+				putchar(' ');
 				}
-				jj = '0';
-				j++;
 			}
-			ii++;
-			j = i;
-			jj = ii + 1;
 		}
-		i++;
-		ii = '0';
-		jj = '1';
-		j = i;
 	}
 	putchar('\n');
 	return (0);

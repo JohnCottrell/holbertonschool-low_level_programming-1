@@ -1,7 +1,7 @@
 #include <stdio.h>
 
 /**
- * main - prints 00-99, but prints only smallest combination of two digits
+ * main - prints 00-999, but prints only smallest combination of three digits
  *
  * Description: Uses multiple loops to puts all numbers, while ensuring
  * the first number is never larger than the second number
