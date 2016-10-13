@@ -3,7 +3,7 @@
 /**
  * main - prints 00-99, but prints only smallest combination of two digits
  *
- * Description: Uses multiple loops to puts all numbers, while ensuring
+ * Description: Uses multiple loops to putchar all numbers, while ensuring
  * the first number is never larger than the second number
  * Return: returns 0
  */
@@ -15,7 +15,7 @@ i = ii = j = '0';
 jj = '1';
 while (i <= '9')
 {
-	while (ii < '9')
+	while (ii <= '9')
 	{
 		while (j <= '9')
 		{
@@ -36,14 +36,12 @@ while (i <= '9')
 			jj = '0';
 			j++;
 		}
-		ii++;
 		j = i;
-		jj = ii + 1;
+		jj = ++ii + 1;
 	}
-	i++;
 	ii = '0';
 	jj = '1';
-	j = i;
+	j = ++i;
 }
 putchar('\n');
 return (0);
