@@ -8,9 +8,9 @@
  */
 int main(void)
 {
-	int n = 'a';
+	int n = '0';
 
-	while (n <= 'z')
+	while (n <= '9')
 	{
 		putchar(n++);
 	}
