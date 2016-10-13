@@ -9,13 +9,11 @@
  */
 int main(void)
 {
-	int i;
-	int j;
-	int k;
+	int i, j, k;
 
 	i = '0';
-	j = '1';
-	k = '2';
+	j = i + 1;
+	k = j + 1;
 
 	while (i <= '7')
 	{
