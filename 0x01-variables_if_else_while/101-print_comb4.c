@@ -3,7 +3,7 @@
 /**
  * main - prints 00-99, but prints only smallest combination of two digits
  *
- * Description: Uses multiple loops to print all numbers, while ensuring
+ * Description: Uses multiple loops to puts all numbers, while ensuring
  * the first number is never larger than the second number
  * Return: returns 0
  */
