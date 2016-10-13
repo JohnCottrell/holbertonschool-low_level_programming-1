@@ -9,38 +9,38 @@
  */
 int main(void)
 {
-	int i, j, k;
+int i, j, k;
 
-	for (i = 48, j = 49, k = 50; i < 58; i++)
+for (i = 48, j = 49, k = 50; i < 58; i++)
+{
+	while (j < 58)
 	{
-		while (j < 58)
+		if (i != j)
 		{
-			if (i != j)
+			while (k < 58)
 			{
-				while (k < 58)
+				if (j != k)
 				{
-					if (j != k)
+					if ((k > j) && (j > i))
 					{
-						if ((k > j) && (j > i))
+						putchar(i);
+						putchar(j);
+						putchar(k);
+						if (i < 55)
 						{
-							putchar(i);
-							putchar(j);
-							putchar(k);
-							if (i < 55)
-							{
-								putchar(',');
-								putchar(' ');
-							}
+							putchar(',');
+							putchar(' ');
 						}
 					}
-					k++;
 				}
-				k = 50;
+				k++;
 			}
-			j++;
+			k = 50;
 		}
-		j = 49;
+		j++;
 	}
-	putchar('\n');
-	return (0);
+	j = 49;
+}
+putchar('\n');
+return (0);
 }
