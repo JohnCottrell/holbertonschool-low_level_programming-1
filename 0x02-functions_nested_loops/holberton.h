@@ -1,6 +1,6 @@
 unsigned long long _llpow(int base, int exponent);
 unsigned long long chop(unsigned long long number, int);
-int _putchar (char);
+int _putchar(char);
 void print_alphabet(void);
 void print_alphabet_x10(void);
 int _islower(int c);
