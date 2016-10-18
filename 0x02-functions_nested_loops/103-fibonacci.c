@@ -25,7 +25,7 @@ int main(void)
 		f = i + l;
 	}
 	if (f % 2 == 0)
-		sum +=f;
+		sum += f;
 		printf("%ld\n", sum);
 
 	return (0);
