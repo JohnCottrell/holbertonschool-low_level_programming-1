@@ -11,7 +11,7 @@
  */
 int main(void)
 {
-	unsigned long int i, l, f;
+	long long i, l, f;
 	int ii, ll, ff;
 	int c, overf;
 
@@ -19,10 +19,10 @@ int main(void)
 	l = 2;
 	f = i + l;
 	c = i;
-	printf("%lu, %lu, ", i, l);
+	printf("%lld, %lld, ", i, l);
 	while (c < 89)
 	{
-		printf("%lu, ", f);
+		printf("%lld, ", f);
 		i = l;
 		l = f;
 		f = i + l;
@@ -34,10 +34,10 @@ int main(void)
 	l = (l - (ll * _llpow(10, 18)));
 	ii = chop(i, 18);
 	i = (i - (ii * _llpow(10, 18)));
-	while (c < 95)
+	while (c < 91)
 	{
 		overf = chop(f, 18) + ff;
-		printf("%d%lu, ", overf, f - (chop(f, 18) * _llpow(10, 18)));
+		printf("over: %d last: %lld, ", overf, f - (chop(f, 18) * _llpow(10, 18)));
 
 
 		ii = ll;
@@ -49,8 +49,8 @@ int main(void)
 
 		c++;
 	}
-	overf = chop(f, 18) + ff;
-	printf("%d%lu\n", overf, (f - (chop(f, 18) * _llpow(10, 18))));
+	overf = chop(f, 16) + ;
+	printf("\nover %d\n last %lld\n", overf, f - (chop(f, 18) * _llpow(10,18)));
 }
 
 
@@ -62,7 +62,7 @@ int main(void)
  * @times: times to chop it down
  * Return: Returns digits left after division.
  */
-unsigned long int chop(unsigned long int num, int times)
+long long chop(long long num, int times)
 {
 	return (num / _llpow(10, times));
 }
@@ -78,9 +78,9 @@ unsigned long int chop(unsigned long int num, int times)
  * @exponent: exponent, number of times to multiply base by itself
  * Return: returns zero
  */
-unsigned long int _llpow(int base, int exponent)
+long long _llpow(int base, int exponent)
 {
-	unsigned long int val = 1;
+	long long val = 1;
 
 	while (exponent > 0)
 	{
