@@ -1,5 +1,4 @@
 #include "holberton.h"
-
 /**
  * main - Puts out 'Holberton' followed by a newline
  * Uses the _putchar function
@@ -18,5 +17,6 @@ int main(void)
 	_putchar('o');
 	_putchar('n');
 	_putchar('\n');
+
 	return (0);
 }

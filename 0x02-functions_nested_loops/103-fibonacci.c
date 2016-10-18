@@ -1,5 +1,12 @@
 #include <stdio.h>
 
+/**
+ *main - prints even fibonacci numbers that are under 4,000,000
+ *
+ *
+ *Return: returns 0
+ */
+
 int main(void)
 {
 	long c, f, l, i;
@@ -18,6 +25,8 @@ int main(void)
 		f = i + l;
 		c++;
 	}
-	if (f % 2 == 0 )
+	if (f % 2 == 0)
 		printf("%ld\n", f);
+
+	return (0);
 }
