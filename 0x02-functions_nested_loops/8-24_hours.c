@@ -1,5 +1,11 @@
 #include "holberton.h"
 
+
+/**
+ * jack_bauer - prints 00:00 to 23:59 to stdout
+ *
+ * Return: Returns void
+ */
 void jack_bauer(void)
 {
 	int h, m;
