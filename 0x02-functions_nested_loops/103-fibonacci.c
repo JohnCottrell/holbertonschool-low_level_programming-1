@@ -9,24 +9,24 @@
 
 int main(void)
 {
-	long c, f, l, i;
+	long f, l, i, sum;
 
-	c = 0;
 	f = 3;
 	i = 1;
 	l = 2;
-	printf("2, ");
+	sum = 2;
+
 	while (f < 3000000)
 	{
 		if (f % 2 == 0)
-			printf("%ld, ", f);
+			sum += f;
 		i = l;
 		l = f;
 		f = i + l;
-		c++;
 	}
 	if (f % 2 == 0)
-		printf("%ld\n", f);
+		sum +=f;
+		printf("%ld\n", sum);
 
 	return (0);
 }
