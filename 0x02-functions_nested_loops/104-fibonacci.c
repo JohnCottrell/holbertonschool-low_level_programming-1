@@ -34,7 +34,7 @@ int main(void)
 	l = (l - (ll * _llpow(10, 18)));
 	ii = chop(i, 18);
 	i = (i - (ii * _llpow(10, 18)));
-	while (c < 94)
+	while (c < 95)
 	{
 		overf = chop(f, 18) + ff;
 		printf("%d%lld, ", overf, f - (chop(f, 18) * _llpow(10, 18)));
