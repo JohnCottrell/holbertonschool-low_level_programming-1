@@ -33,7 +33,7 @@ int _abs(int n)
 }
 
 /**
- * putnumber - check the code for Holberton School students.
+ * putnumber - puts number to output, formatted with a comma
  *
  * @n: number to print to output
  * Return: void.
