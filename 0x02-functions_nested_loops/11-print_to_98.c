@@ -1,5 +1,11 @@
 #include "holberton.h"
 
+/**
+ * print_to_98 - prints natural numbers from n to 98
+ *
+ * @n: starting point
+ * Return: void
+ */
 void print_to_98(int n)
 {
 	if (n > 98)
@@ -12,6 +18,12 @@ void print_to_98(int n)
 		putnumber(98);
 }
 
+/**
+ * _abs - returns absolute value of parameter
+ *
+ * @n: parameter to get value of
+ * Return: absolute value
+ */
 int _abs(int n)
 {
 	if (n <= 0)
@@ -20,6 +32,12 @@ int _abs(int n)
 		return (n);
 }
 
+/**
+ * putnumber - check the code for Holberton School students.
+ *
+ * @n: number to print to output
+ * Return: void.
+ */
 void putnumber(int n)
 {
 	if (n < 0)
@@ -53,7 +71,7 @@ void putnumber(int n)
 	}
 
 	else
-        {
+	{
 		_putchar('9');
 		_putchar('8');
 		_putchar(10);
