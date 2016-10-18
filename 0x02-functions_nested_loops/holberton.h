@@ -1,5 +1,5 @@
-unsigned long long _llpow(int base, int exponent);
-unsigned long long chop(unsigned long long number, int);
+long long _llpow(int base, int exponent);
+long long chop(long long number, int);
 int _putchar(char);
 void print_alphabet(void);
 void print_alphabet_x10(void);
