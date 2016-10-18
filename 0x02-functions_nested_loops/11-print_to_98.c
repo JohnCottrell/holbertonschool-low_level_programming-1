@@ -40,12 +40,13 @@ int _abs(int n)
  */
 void putnumber(int n)
 {
+
 	if (n < 0)
 	{
 		_putchar('-');
-		n = _abs(n);
 	}
-
+	if (n <= 0)
+		n = (n - (n * 2));
 	if (n < 10)
 	{
 		_putchar(n + '0');
