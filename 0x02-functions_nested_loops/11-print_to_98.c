@@ -19,20 +19,6 @@ void print_to_98(int n)
 }
 
 /**
- * _abs - returns absolute value of parameter
- *
- * @n: parameter to get value of
- * Return: absolute value
- */
-int _abs(int n)
-{
-	if (n <= 0)
-		return (n - (n * 2));
-	else
-		return (n);
-}
-
-/**
  * putnumber - puts number to output, formatted with a comma
  *
  * @n: number to print to output
