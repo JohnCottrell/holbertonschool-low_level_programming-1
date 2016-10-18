@@ -9,10 +9,10 @@
 void print_to_98(int n)
 {
 	if (n > 98)
-		while (n >= 98)
+		while (n > 98)
 			putnumber(n--);
 	if (n < 98)
-		while (n <= 98)
+		while (n < 98)
 			putnumber(n++);
 	if (n == 98)
 		putnumber(98);
@@ -70,7 +70,8 @@ void putnumber(int n)
 		_putchar(' ');
 	}
 
-	else
+
+	if (n == 98)
 	{
 		_putchar('9');
 		_putchar('8');
