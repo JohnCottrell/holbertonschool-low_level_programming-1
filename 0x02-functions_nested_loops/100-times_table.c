@@ -1,5 +1,11 @@
 #include "holberton.h"
 
+/**
+ * print_times_table - prints times table for numbers from 0-14
+ *
+ * @n: time table to print
+ * Return: void
+ */
 void print_times_table(int n)
 {
 	int i, j;
@@ -19,7 +25,12 @@ void print_times_table(int n)
 	}
 }
 
-
+/**
+ * putformatnumber - puts formatted characters to output
+ *
+ * @n: number to format
+ * Return: void
+ */
 void putformatnumber(int n)
 {
 	if (n < 10)
