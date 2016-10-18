@@ -11,22 +11,19 @@
  */
 int main(void)
 {
-	unsigned long int i, l, f;
-	int ii, ll, ff;
-	int c, overf;
+	unsigned long int i, l, f, last, lastlast;
+	int ii, ll, ff, c, overf, overl, overi;
 
-	i = 1;
+	i = c = 1;
 	l = 2;
 	f = i + l;
-	c = i;
 	printf("%lu, %lu, ", i, l);
-	while (c < 89)
+	for (c = 0; c < 89; c++)
 	{
 		printf("%lu, ", f);
 		i = l;
 		l = f;
 		f = i + l;
-		c++;
 	}
 	ff = chop(f, 18);
 	f = (f - (ff * _llpow(10, 18)));
@@ -34,24 +31,27 @@ int main(void)
 	l = (l - (ll * _llpow(10, 18)));
 	ii = chop(i, 18);
 	i = (i - (ii * _llpow(10, 18)));
-	while (c < 95)
+	for (c = 88; c < 95; c++)
 	{
+		overi = overl;
+		overl = overf;
 		overf = chop(f, 18) + ff;
-		printf("%d%lu, ", overf, f - (chop(f, 18) * _llpow(10, 18)));
-
-		ii = ll;
-		ll = ff;
-		ff = ii + ll;
+		printf("%d%lu", overf, f - (chop(f, 18) * _llpow(10, 18)));
+		if (c != 94)
+			printf(", ");
+		lastlast = last;
+		last = (f - chop(f, 18) * _llpow(10, 18));
 		i = l;
 		l = f;
 		f = i + l;
-		c++;
+		ii = ll;
+		ll = ff;
+		ff = ii + ll;
 	}
-	overf = chop(f, 18) + ff;
-	printf("%d%lu\n", overf, (f - (chop(f, 18) * _llpow(10, 18))));
-
+	printf("\n");
 	return (0);
 }
+
 
 
 /**
@@ -90,3 +90,4 @@ unsigned long int _llpow(int base, int exponent)
 	return (val);
 
 }
+
