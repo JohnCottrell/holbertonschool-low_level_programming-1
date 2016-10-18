@@ -39,14 +39,12 @@ int main(void)
 		overf = chop(f, 18) + ff;
 		printf("%d%lu, ", overf, f - (chop(f, 18) * _llpow(10, 18)));
 
-
 		ii = ll;
 		ll = ff;
 		ff = ii + ll;
 		i = l;
 		l = f;
 		f = i + l;
-
 		c++;
 	}
 	overf = chop(f, 18) + ff;
