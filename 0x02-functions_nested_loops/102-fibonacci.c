@@ -15,7 +15,7 @@ int main(void)
 	i = 1;
 	l = 2;
 	printf("1, 2, ");
-	while (c < 46)
+	while (c < 47)
 	{
 		printf("%ld, ", f);
 		i = l;
