@@ -28,6 +28,11 @@ void print_to_98(int n)
 void _putnumber(int n)
 {
 
+       	if (n < 0)
+	{
+		_putchar('-');
+	}
+
 	if (n == 98)
 	{
 		_putchar('9');
@@ -35,9 +40,12 @@ void _putnumber(int n)
 		_putchar(10);
 	}
 
-	if (n < 0)
+	if (n == -98)
 	{
-		_putchar('-');
+		_putchar('9');
+		_putchar('8');
+		_putchar(',');
+	        _putchar(' ');
 	}
 
 	if (n <= 0)
