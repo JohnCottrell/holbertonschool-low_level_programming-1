@@ -14,13 +14,9 @@ int main(void)
 	unsigned long int i, l, f, last, lastlast;
 	int ii, ll, ff, c, overf, overl, overi;
 
-	
 	i = c = 1;
 	l = 2;
 	f = i + l;
-	i = 0;
-	overi = lastlast = 0;
-	lastlast = overi + i + lastlast;
 	printf("%lu, %lu, ", i, l);
 	for (c = 0; c < 89; c++)
 	{
@@ -53,6 +49,7 @@ int main(void)
 		ff = ii + ll;
 	}
 	printf("\n");
+	f = overi + lastlast;
 	return (0);
 }
 
