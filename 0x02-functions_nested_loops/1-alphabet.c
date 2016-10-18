@@ -1,5 +1,10 @@
 #include "holberton.h"
 
+/**
+ * print_alphabet - prints the alphabet, from a - z, followed by a newline
+ *
+ * Return: void
+ */
 void print_alphabet(void)
 {
 	int a;
