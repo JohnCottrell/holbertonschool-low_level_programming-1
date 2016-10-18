@@ -11,23 +11,22 @@ void print_to_98(int n)
 {
 	if (n > 98)
 		while (n > 98)
-			putnumber(n--);
+			_putnumber(n--);
 	if (n < 98)
 		while (n < 98)
-			putnumber(n++);
+			_putnumber(n++);
 	if (n == 98)
-		putnumber(98);
+		_putnumber(98);
 }
 
 /**
- * putnumber - puts number to output, formatted with a comma
+ * _putnumber - puts number to output, formatted with a comma
  *
  * @n: number to print to output
- * Return: void.
+ * Return: void
  */
-void putnumber(int n)
+void _putnumber(int n)
 {
-
 	if (n < 0)
 	{
 		_putchar('-');
@@ -48,7 +47,6 @@ void putnumber(int n)
 		_putchar(',');
 		_putchar(' ');
 	}
-
 	else if (n >= 100)
 	{
 		_putchar(n / 100 + '0');
@@ -57,8 +55,6 @@ void putnumber(int n)
 		_putchar(',');
 		_putchar(' ');
 	}
-
-
 	if (n == 98)
 	{
 		_putchar('9');
