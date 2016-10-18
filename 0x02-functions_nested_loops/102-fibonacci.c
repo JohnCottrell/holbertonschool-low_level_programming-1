@@ -24,4 +24,6 @@ int main(void)
 		c++;
 	}
 	printf("%ld\n", f);
+
+	return (0);
 }
