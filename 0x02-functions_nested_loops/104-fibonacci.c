@@ -51,6 +51,8 @@ int main(void)
 	}
 	overf = chop(f, 18) + ff;
 	printf("%d%lu\n", overf, (f - (chop(f, 18) * _llpow(10, 18))));
+
+	return (0);
 }
 
 
