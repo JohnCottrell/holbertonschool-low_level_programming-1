@@ -1,7 +1,7 @@
 int mul(int a, int b);
 int _putchar(char c);
-int mypow(int a, int b);
-int _abs(int n);
+long mypow(long a, long b);
+long _abs(long n);
 int _isupper(int c);
 int _isdigit(int c);
 int mul(int a, int b);

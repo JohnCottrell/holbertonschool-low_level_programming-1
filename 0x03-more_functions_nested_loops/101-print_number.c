@@ -9,9 +9,9 @@
  * @exponent: exponent, number of times to multiply base by itself
  * Return: returns zero
  */
-int mypow(int base, int exponent)
+long mypow(long base, long exponent)
 {
-	int val = 1;
+	long val = 1;
 
 	while (exponent > 0)
 	{
@@ -28,7 +28,7 @@ int mypow(int base, int exponent)
  * @n: int to get absolute value of
  * Return: Returns absolute value.
  */
-int _abs(int n)
+long _abs(long n)
 {
 	if (n <= 0)
 		return (n - (n * 2));
