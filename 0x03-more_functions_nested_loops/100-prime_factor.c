@@ -1,5 +1,6 @@
 #include "holberton.h"
 #include <stdio.h>
+#include <math.h>
 
 /**
  * main - Gives the largest prime factor of a set number
