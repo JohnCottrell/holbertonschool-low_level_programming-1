@@ -40,7 +40,6 @@ void print_number(int n)
 	{
 		_putchar('-');
 		temp = (temp - (temp * 2));
-		printf("%ld", temp);
 	}
 	while (stop == 0)
 	{
