@@ -1,5 +1,42 @@
 #include "holberton.h"
 
+
+/**
+ * mypow - Quick pow implementation.
+ * Description: Multiples number by itself a number of times
+ * designated by the exponent.
+ *
+ * @base: base number
+ * @exponent: exponent, number of times to multiply base by itself
+ * Return: returns zero
+ */
+int mypow(int base, int exponent)
+{
+	int val = 1;
+
+	while (exponent > 0)
+	{
+		val *= base;
+		exponent--;
+	}
+	return (val);
+
+}
+
+/**
+ * _abs - Returns absolute value of number
+ *
+ * @n: int to get absolute value of
+ * Return: Returns absolute value.
+ */
+int _abs(int n)
+{
+	if (n <= 0)
+		return (n - (n * 2));
+	else
+		return (n);
+}
+
 /**
  * print_number - takes in number, outputs  using putchar
  *
@@ -36,40 +73,4 @@ void print_number(int n)
 		num = num / mypow(10, digits);
 		_putchar(num + '0');
 	}
-}
-
-/**
- * mypow - Quick pow implementation.
- * Description: Multiples number by itself a number of times
- * designated by the exponent.
- *
- * @base: base number
- * @exponent: exponent, number of times to multiply base by itself
- * Return: returns zero
- */
-int mypow(int base, int exponent)
-{
-	int val = 1;
-
-	while (exponent > 0)
-	{
-		val *= base;
-		exponent--;
-	}
-	return (val);
-
-}
-
-/**
- * _abs - Returns absolute value of number
- *
- * @n: int to get absolute value of
- * Return: Returns absolute value.
- */
-int _abs(int n)
-{
-	if (n <= 0)
-		return (n - (n * 2));
-	else
-		return (n);
 }
