@@ -1,5 +1,5 @@
 #include "holberton.h"
-
+#include <stdio.h>
 /**
  * mypow - Quick pow implementation.
  * Description: Multiples number by itself a number of times
@@ -30,31 +30,32 @@ long mypow(long base, long exponent)
  */
 void print_number(int n)
 {
-	long digits, stop, i, num;
+	long digits, stop, i, num, temp;
 
 	i = 1;
 	digits = 0;
 	stop = 0;
-
-	if (n < 0)
+	temp = n;
+	if (temp < 0)
 	{
 		_putchar('-');
-		n = (n - (n * 2));
+		temp = (temp - (temp * 2));
+		printf("%ld", temp);
 	}
 	while (stop == 0)
 	{
-		if ((n / mypow(10, i)) < 1)
+		if ((temp / mypow(10, i)) < 1)
 			break;
 		i++;
 		digits++;
 	}
 
-	num = n / mypow(10, digits);
+	num = temp / mypow(10, digits);
 	_putchar(num + '0');
 
 	while (digits > 0)
 	{
-		num = n % mypow(10, digits--);
+		num = temp % mypow(10, digits--);
 		num = num / mypow(10, digits);
 		_putchar(num + '0');
 	}
