@@ -1,9 +1,8 @@
 #include "holberton.h"
 #include <stdio.h>
-#include <math.h>
 
 /**
- * main -
+ * main - Gives the largest prime factor of a set number
  *
  * Description: Starts at 2
  * If number is divisible by i, divide it, continue on with new, divided
