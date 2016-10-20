@@ -1,9 +1,9 @@
 #include "holberton.h"
 
 /**
- * print_number - takes in number, prints using putchar
+ * print_number - takes in number, outputs  using putchar
  *
- * @n: number to print
+ * @n: number to putchar
  * Return: void
  */
 void print_number(int n)
