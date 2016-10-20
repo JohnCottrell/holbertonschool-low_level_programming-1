@@ -1,6 +1,5 @@
 #include "holberton.h"
 
-
 /**
  * mypow - Quick pow implementation.
  * Description: Multiples number by itself a number of times
@@ -45,7 +44,7 @@ int _abs(int n)
  */
 void print_number(int n)
 {
-	int digits, stop, i, num;
+	long digits, stop, i, num;
 
 	i = 1;
 	digits = 0;
