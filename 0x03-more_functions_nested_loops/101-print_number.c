@@ -23,20 +23,6 @@ long mypow(long base, long exponent)
 }
 
 /**
- * _abs - Returns absolute value of number
- *
- * @n: int to get absolute value of
- * Return: Returns absolute value.
- */
-long _abs(long n)
-{
-	if (n <= 0)
-		return (n - (n * 2));
-	else
-		return (n);
-}
-
-/**
  * print_number - takes in number, outputs  using putchar
  *
  * @n: number to putchar
@@ -53,7 +39,7 @@ void print_number(int n)
 	if (n < 0)
 	{
 		_putchar('-');
-		n = _abs(n);
+		n = (n - (n * ));
 	}
 	while (stop == 0)
 	{
