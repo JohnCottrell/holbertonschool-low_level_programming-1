@@ -1,7 +1,7 @@
 #include "holberton.h"
 
 /**
- * putnumber - takes in number, prints using putchar
+ * print_number - takes in number, prints using putchar
  *
  * @n: number to print
  * Return: void
@@ -39,7 +39,7 @@ void print_number(int n)
 }
 
 /**
- * _llpow - Quick pow implementation.
+ * _pow - Quick pow implementation.
  * Description: Multiples number by itself a number of times
  * designated by the exponent.
  *
