@@ -5,51 +5,51 @@
  * main - prints first 97 fibonacci numbers
  *
  * Description: At the 89th number, switches to uses two
- * unsigned LLs to hold first handful of digits and last digits.
+ * variables, to hold first handful of digits and last digits.
  *
  * Return: returns zero
  */
 int main(void)
 {
-	unsigned long int i, l, f, last, lastlast;
-	int ii, ll, ff, c, overf, overl, overi;
+	unsigned long int i, l, f;
+	int ii, ll, ff, c, overf, init;
 
 	i = c = 1;
 	l = 2;
-	f = i + l;
+	f = 3;
+	init = 0;
 	printf("%lu, %lu, ", i, l);
-	for (c = 0; c < 89; c++)
+	for (c = 0; c < 95; c++)
 	{
-		printf("%lu, ", f);
+		if (c < 89)
+		{
+			printf("%lu, ", f);
+		}
+		else
+		{
+				if (init == 0)
+				{
+					ff = chop(f, 18);
+					f %= _llpow(10, 18);
+					ll = chop(l, 18);
+					l %= _llpow(10, 18);
+					ii = chop(i, 18);
+					i %= _llpow(10, 18);
+					init = 1;
+				}
+			overf = chop(f, 18) + ff;
+			printf("%d%lu", overf, f - (chop(f,18)*_llpow(10,18)));
+			if (c != 94)
+				printf(", ");
+			ii = ll;
+			ll = ff;
+			ff = ii + ll;
+		}
 		i = l;
 		l = f;
 		f = i + l;
-	}
-	ff = chop(f, 18);
-	f = (f - (ff * _llpow(10, 18)));
-	ll = chop(l, 18);
-	l = (l - (ll * _llpow(10, 18)));
-	ii = chop(i, 18);
-	i = (i - (ii * _llpow(10, 18)));
-	for (c = 88; c < 95; c++)
-	{
-		overi = overl;
-		overl = overf;
-		overf = chop(f, 18) + ff;
-		printf("%d%lu", overf, f - (chop(f, 18) * _llpow(10, 18)));
-		if (c != 94)
-			printf(", ");
-		lastlast = last;
-		last = (f - chop(f, 18) * _llpow(10, 18));
-		i = l;
-		l = f;
-		f = i + l;
-		ii = ll;
-		ll = ff;
-		ff = ii + ll;
 	}
 	printf("\n");
-	f = overi + lastlast;
 	return (0);
 }
 
