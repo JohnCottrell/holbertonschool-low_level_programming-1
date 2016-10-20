@@ -1,14 +1,30 @@
 #include "holberton.h"
 
 /**
- * main -
+ * print_diagonal - Print a diagonal line in the terminal
  *
- * Description:
- * Return:
+ *
+ * @n: length of line
+ * Return: void
  */
-int main (void)
+
+void print_diagonal(int n)
 {
+	int i, whitespace;
 
-
-	return (0);
+	whitespace = 0;
+	while (n > 0)
+	{
+		i = 0;
+		while (whitespace != i)
+		{
+			_putchar(' ');
+			i++;
+		}
+		_putchar('\\');
+		_putchar('\n');
+		n--;
+		whitespace++;
+	}
+		_putchar(10);
 }
