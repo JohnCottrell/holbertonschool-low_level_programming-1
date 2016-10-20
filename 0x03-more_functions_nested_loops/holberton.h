@@ -1,3 +1,5 @@
+long mypower(long, long);
+void print_number(int);
 int mul(int a, int b);
 int _putchar(char c);
 int _isupper(int c);
