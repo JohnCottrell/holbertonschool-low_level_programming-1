@@ -21,19 +21,19 @@ void print_number(int n)
 	}
 	while (stop == 0)
 	{
-		if ((n / _pow(10, i)) < 1)
+		if ((n / mypow(10, i)) < 1)
 			break;
 		i++;
 		digits++;
 	}
 
-	num = n / _pow(10, digits);
+	num = n / mypow(10, digits);
 	_putchar(num + '0');
 
 	while (digits > 0)
 	{
-		num = n % _pow(10, digits--);
-		num = num / _pow(10, digits);
+		num = n % mypow(10, digits--);
+		num = num / mypow(10, digits);
 		_putchar(num + '0');
 	}
 }
@@ -47,7 +47,7 @@ void print_number(int n)
  * @exponent: exponent, number of times to multiply base by itself
  * Return: returns zero
  */
-int _pow(int base, int exponent)
+int mypow(int base, int exponent)
 {
 	int val = 1;
 
