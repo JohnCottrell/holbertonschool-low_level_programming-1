@@ -47,9 +47,9 @@ void print_number(int n)
  * @exponent: exponent, number of times to multiply base by itself
  * Return: returns zero
  */
-long _pow(int base, int exponent)
+int _pow(int base, int exponent)
 {
-	unsigned long int val = 1;
+	int val = 1;
 
 	while (exponent > 0)
 	{
