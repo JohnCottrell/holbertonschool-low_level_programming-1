@@ -39,7 +39,7 @@ void print_number(int n)
 }
 
 /**
- * _pow - Quick pow implementation.
+ * mypow - Quick pow implementation.
  * Description: Multiples number by itself a number of times
  * designated by the exponent.
  *
