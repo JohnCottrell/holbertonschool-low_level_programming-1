@@ -12,47 +12,34 @@
 int main(void)
 {
 	unsigned long int i, l, f;
-	int ii, ll, ff, c, overf, init;
+	int ii, ll, ff, c;
 
 	i = c = 1;
 	l = 2;
 	f = 3;
-	init = 0;
+
 	printf("%lu, %lu, ", i, l);
 	for (c = 0; c < 95; c++)
 	{
-		if (c < 89)
+		if (c >= 88)
 		{
-			printf("%lu, ", f);
-		}
-		else
-		{
-				if (init == 0)
-				{
-					ff = chop(f, 18);
-					f %= _llpow(10, 18);
-					ll = chop(l, 18);
-					l %= _llpow(10, 18);
-					ii = chop(i, 18);
-					i %= _llpow(10, 18);
-					init = 1;
-				}
-			overf = chop(f, 18) + ff;
-			printf("%d%lu", overf, f - (chop(f,18)*_llpow(10,18)));
-			if (c != 94)
-				printf(", ");
+			ff += chop(f, 18);
+			f %= _llpow(10, 18);
+			printf("%d", ff);
 			ii = ll;
 			ll = ff;
 			ff = ii + ll;
 		}
+     		printf("%lu", f);
+		if (c != 94)
+			printf(", ");
 		i = l;
 		l = f;
-		f = i + l;
+		f = l + i;
 	}
 	printf("\n");
 	return (0);
 }
-
 
 
 /**
