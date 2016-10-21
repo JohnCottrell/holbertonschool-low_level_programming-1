@@ -12,7 +12,7 @@ void print_triangle(int size)
 	int whitespace, tri, i;
 
 	i = 1;
-	if (size < 0)
+	if (size <= 0)
 		_putchar('\n');
 	while (size > 0)
 	{
