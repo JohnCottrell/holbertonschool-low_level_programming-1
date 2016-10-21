@@ -17,12 +17,8 @@ int main(void)
 	long i;
 
 	for (i = 2; i < sqrt(num); i++)
-	{
 		if ((num % i) == 0)
-		{
 			num /= i;
-		}
-	}
 	printf("%ld\n", num);
 
 	return (0);
