@@ -1,14 +1,12 @@
 #include "holberton.h"
 
 /**
- * function_name - Short description, single line
- * @parameterx: Description of parameter x
+ * _strlen - returns the length of a given string
  *
- * Description: Longer description of the function)?
  *
- * Return: Description of the returned value
+ * @s: string to check the length of
+ * Return: returns the length of the string
  */
-
 int _strlen(char *s)
 {
 	int i;
@@ -16,16 +14,16 @@ int _strlen(char *s)
 	i = 0;
 	while (s[i] != '\0')
 		i++;
-	return i;
+	return (i);
 }
 
 /**
- * function_name - Short description, single line
- * @parameterx: Description of parameter x
+ * _strcpy - copies an entire string to a buffer
  *
- * Description: Longer description of the function)?
  *
- * Return: Description of the returned value
+ * @src: source string to copy
+ * @dest: buffer to copy string into
+ * Return: returns pointer to copied string
  */
 
 char *_strcpy(char *dest, char *src)
@@ -43,5 +41,5 @@ char *_strcpy(char *dest, char *src)
 
 	retval = dest;
 
-	return retval;
+	return (retval);
 }

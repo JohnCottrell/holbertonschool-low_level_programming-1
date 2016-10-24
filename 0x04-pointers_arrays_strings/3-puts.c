@@ -1,12 +1,10 @@
 #include "holberton.h"
 
 /**
- * function_name - Short description, single line
- * @parameterx: Description of parameter x
+ * _puts - prints a string to stdout
  *
- * Description: Longer description of the function)?
- *
- * Return: Description of the returned value
+ * @str: string to print
+ * Return: void
  */
 
 void _puts(char *str)

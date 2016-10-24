@@ -2,12 +2,11 @@
 #include <stdio.h>
 
 /**
- * function_name - Short description, single line
- * @parameterx: Description of parameter x
+ * print_array - prints contents of array to stdout individually
  *
- * Description: Longer description of the function)?
- *
- * Return: Description of the returned value
+ * @a: array to print from
+ * @n: number of array values of print
+ * Return: void
  */
 
 void print_array(int *a, int n)

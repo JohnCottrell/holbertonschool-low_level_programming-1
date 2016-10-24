@@ -1,12 +1,10 @@
 #include "holberton.h"
 
 /**
- * function_name - Short description, single line
- * @parameterx: Description of parameter x
+ * print_rev - prints a string in reverse
  *
- * Description: Longer description of the function)?
- *
- * Return: Description of the returned value
+ * @s: string to reverse
+ * Return: void
  */
 
 void print_rev(char *s)

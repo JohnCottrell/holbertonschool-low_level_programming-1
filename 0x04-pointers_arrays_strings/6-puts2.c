@@ -1,5 +1,12 @@
 #include "holberton.h"
 
+/**
+ * _strlen - returns the length of a given string
+ *
+ *
+ * @s: string to check the length of
+ * Return: returns the length of the string
+ */
 int _strlen(char *s)
 {
 	int i;
@@ -7,17 +14,15 @@ int _strlen(char *s)
 	i = 0;
 	while (s[i] != '\0')
 		i++;
-	return i;
+	return (i);
 }
 
 
 /**
- * function_name - Short description, single line
- * @parameterx: Description of parameter x
+ * puts2 - prints every other character in a string
  *
- * Description: Longer description of the function)?
- *
- * Return: Description of the returned value
+ * @str: string to print
+ * Return: void
  */
 
 void puts2(char *str)

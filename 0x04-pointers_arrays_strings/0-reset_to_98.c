@@ -1,12 +1,10 @@
 #include "holberton.h"
 
 /**
- * function_name - Short description, single line
- * @parameterx: Description of parameter x
+ * reset_to_98 - Takes in a pointer, sets the pointer's value to 98
  *
- * Description: Longer description of the function)?
- *
- * Return: Description of the returned value
+ * @n: pointer to an integer
+ * Return: void
  */
 
 void reset_to_98(int *n)

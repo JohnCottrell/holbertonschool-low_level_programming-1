@@ -1,12 +1,12 @@
 #include "holberton.h"
 
 /**
- * function_name - Short description, single line
- * @parameterx: Description of parameter x
+ * swap_int - swaps the value of two pointers
  *
- * Description: Longer description of the function)?
  *
- * Return: Description of the returned value
+ * @a: pointer to an integer
+ * @b: pointer to another integer
+ * Return: void
  */
 
 void swap_int(int *a, int *b)

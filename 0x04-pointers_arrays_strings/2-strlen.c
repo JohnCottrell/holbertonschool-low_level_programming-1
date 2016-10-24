@@ -1,12 +1,11 @@
 #include "holberton.h"
 
 /**
- * function_name - Short description, single line
- * @parameterx: Description of parameter x
+ * _strlen - returns the length of a given string
  *
- * Description: Longer description of the function)?
  *
- * Return: Description of the returned value
+ * @s: string to check the length of
+ * Return: returns the length of the string
  */
 
 int _strlen(char *s)
@@ -16,5 +15,5 @@ int _strlen(char *s)
 	i = 0;
 	while (s[i] != '\0')
 		i++;
-	return i;
+	return (i);
 }
