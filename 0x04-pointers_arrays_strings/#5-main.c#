@@ -16,6 +16,5 @@ int main(void)
 	printf("%s\n", s);
 	rev_string(test);
 	printf("%s\n", test);
-	
 	return (0);
 }

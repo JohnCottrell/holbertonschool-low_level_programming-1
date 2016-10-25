@@ -6,7 +6,6 @@
 5-rev_string.c
 6-puts2.c
 7-puts_half.c
-
 9-strcpy.c
 100-atoi.c
 101-keygen.c
