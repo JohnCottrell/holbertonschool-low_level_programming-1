@@ -66,8 +66,6 @@ int _atoi(char *s)
 			neg--;
 		i++;
 	}
-	if (i == 0)
-		return (0);
 
 	e = i;
 
@@ -75,7 +73,8 @@ int _atoi(char *s)
 		e++;
 	while (s[e] == '\0' || s[e] == ' ')
 		e--;
-
+	if (e == 0)
+		return 0;
 	retval = s[e--] - '0';
 	places = 1;
 	while (e >= i)
