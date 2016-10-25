@@ -24,8 +24,6 @@ int _atoi(char *s)
 	{
 		if (s[i] == '-')
 			neg++;
-		if (s[i] == '+')
-			neg--;
 		if (s[i] >= '0' && s[i] <= '9')
 		{
 			while (s[i] >= '0' && s[i] <= '9')
@@ -39,7 +37,7 @@ int _atoi(char *s)
 	j--;
 	while (j >= 0)
 	{
-		if (neg > 0)
+		if (neg % 2 != 0)
 			retval = retval - (temp[j--] * k);
 		else
 			retval = retval + (temp[j--] * k);
