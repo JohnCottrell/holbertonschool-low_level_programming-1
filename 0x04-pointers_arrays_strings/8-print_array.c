@@ -11,8 +11,13 @@
 
 void print_array(int *a, int n)
 {
-	int i;
+	int i, len;
+
 	i = 0;
+	len = sizeof(a);
+	if (n > len)
+		n = len;
+
 	if (n > 0)
 	{
 		while (i < (n - 1))
