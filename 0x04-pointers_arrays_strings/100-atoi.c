@@ -55,7 +55,6 @@ int _atoi(char *s)
 {
 	long i, e, neg, places, temp;
 	int retval;
-	
 	i = 0;
 	neg = 0;
 
@@ -86,5 +85,7 @@ int _atoi(char *s)
 	{
 		retval = retval - (retval * 2);
 	}
+	if (retval == 0)
+		return (0);
 	return (retval);
 }
