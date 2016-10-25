@@ -27,15 +27,16 @@ int _strlen(char *s)
  */
 void rev_string(char *s)
 {
-	int i, d, len, temp;
+	int i, len;
+	char a, z;
 
 	len = _strlen(s) - 1;
 	i = 0;
-	d = len;
 	while (i < len)
 	{
-		temp = s[i];
-		s[i++] = s[d];
-		s[d--] = temp;
+		a = s[i];
+		z = s[len];
+		s[i++] = z;
+		s[len--] = a;
 	}
 }
