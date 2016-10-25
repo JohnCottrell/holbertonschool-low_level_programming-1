@@ -53,8 +53,9 @@ long mypow(long base, long exponent)
  */
 int _atoi(char *s)
 {
-	int i, e, neg, retval, places, temp;
-
+	long i, e, neg, places, temp;
+	int retval;
+	
 	i = 0;
 	neg = 0;
 
