@@ -15,7 +15,6 @@ void print_array(int *a, int n)
 
 	i = 0;
 	len = 5;
-	printf("len: %d\n", len);
 	if (n > len)
 		n = len;
 	if (n > 0)
