@@ -1,7 +1,6 @@
-#include <stdio.h>
 #include <time.h>
 #include <stdlib.h>
-
+#include <stdio.h>
 /**
  * main - generates a password for 101-crackme
  *
@@ -14,7 +13,7 @@
  */
 int main(void)
 {
-	char password[50];
+	char password[100];
 	int randNum, num, i;
 
 	num = 0;
