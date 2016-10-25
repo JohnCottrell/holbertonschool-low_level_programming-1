@@ -12,10 +12,13 @@
 void print_array(int *a, int n)
 {
 	int i;
-
-	while (i < (n - 1))
+	i = 0;
+	if (n > 0)
 	{
-		printf("%d, ", a[i++]);
+		while (i < (n - 1))
+		{
+			printf("%d, ", a[i++]);
+		}
+		printf("%d\n", a[i]);
 	}
-	printf("%d\n", a[i]);
 }
