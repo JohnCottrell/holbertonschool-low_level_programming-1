@@ -1,6 +1,7 @@
 #include <time.h>
 #include <stdlib.h>
 #include <stdio.h>
+
 /**
  * main - generates a password for 101-crackme
  *
@@ -9,7 +10,7 @@
  * keygen generates random values between 32 and 127 and adds them up until it
  * reaches 2772
  *
- * Return: 1 on success
+ * Return: 0 on success
  */
 int main(void)
 {
@@ -32,5 +33,5 @@ int main(void)
 	password[i] = '\0';
 	printf("%s", password);
 
-	return (1);
+	return (0);
 }
