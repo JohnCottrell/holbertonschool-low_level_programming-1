@@ -13,9 +13,8 @@
  */
 int _atoi(char *s)
 {
-	long i, j, neg;
-	long temp[100];
-	int retval, k;
+	int temp[100];
+	int retval, k, i, j, neg;
 
 	i = j = 0;
 	k = 1;
