@@ -42,8 +42,10 @@ int _atoi(char *s)
 		retval = retval + (temp[j--] * k);
 		k = k * 10;
 	}
+
 	if (neg > 0)
-		retval *= -1;
+		retval = retval - (retval * 2);
+
 	return (retval);
 
 }
