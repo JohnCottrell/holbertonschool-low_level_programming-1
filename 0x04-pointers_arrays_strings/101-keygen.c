@@ -14,7 +14,7 @@
  */
 int main(void)
 {
-	char password[100];
+	char password[50];
 	int randNum, num, i;
 
 	num = 0;
