@@ -39,12 +39,12 @@ int _atoi(char *s)
 	j--;
 	while (j >= 0)
 	{
-		retval = retval + (temp[j--] * k);
+		if (neg > 0)
+			retval = retval - (temp[j--] * k);
+		else
+			retval = retval + (temp[j--] * k);
 		k = k * 10;
 	}
-
-	if (neg > 0)
-		retval = retval - (retval * 2);
 
 	return (retval);
 
