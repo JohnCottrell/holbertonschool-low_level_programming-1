@@ -1,5 +1,5 @@
 #include "holberton.h"
-
+#include <stdio.h>
 
 /**
  * _atoi - Converts a character array to an integer
@@ -13,37 +13,18 @@
  */
 int _atoi(char *s)
 {
-	int temp[100];
-	int retval, k, i, j, neg;
+	int retval, i, neg;
 
-	i = j = 0;
-	k = 1;
-	neg = 0;
+	i = 0;
 	retval = 0;
-	while (s[i] != '\0')
+	neg = -1;
+	while (s[i] != '\0' && (s[i] < '0' || s[i] > '9'))
 	{
 		if (s[i] == '-')
-			neg++;
-		if (s[i] >= '0' && s[i] <= '9')
-		{
-			while (s[i] >= '0' && s[i] <= '9')
-			{
-				temp[j++] = s[i++] - '0';
-			}
-			break;
-		}
+			neg *= -1;
 		i++;
 	}
-	j--;
-	while (j >= 0)
-	{
-		if (neg % 2 != 0)
-			retval = retval - (temp[j--] * k);
-		else
-			retval = retval + (temp[j--] * k);
-		k = k * 10;
-	}
-
-	return (retval);
-
+	while (s[i] != '\0' && (s[i] >= '0' && s[i] <= '9'))
+		retval = (retval * 10) - (s[i++] - '0');
+	return (retval * neg);
 }
