@@ -1,14 +1,14 @@
-#!/bin/bash  
-# Automated File Population for Holberton School Projects                       
-# By Tim Britton, last edited 11/Oct/2016                                       
-# Use explained in README.md in folder                                          
+#!/bin/bash
+# Automated File Population for Holberton School Projects
+# By Tim Britton, last edited 11/Oct/2016
+# Use explained in README.md in folder
 
 c=$1
 d=$2
 CWD=${PWD##*/}
 DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 if [ "$c" != '' ] && [ "$d" != '' ]; then
-    FILE=`curl -b $d https://intranet.hbtn.io/projects/$c > source`
+    curl -b $d https://intranet.hbtn.io/projects/$c > source
     HEAD=`cat source | head -2 | tail -1`
     if [ "$HEAD" != '*<!DOCTYPE html>*' ]; then
 	cat source | awk /"<li>File: <code>"/ | awk '{print $2}'| cut -d '>' -f2 | cut -d '<' -f1 |
