@@ -2,12 +2,11 @@
 #include <stdio.h>
 
 /**
- * function_name - Short description, single line
- * @parameterx: Description of parameter x
+ * _strpbrk - searches a string for any set of bytes
  *
- * Description: Longer description of the function)?
- *
- * Return: Description of the returned value
+ * @s: string to search
+ * @accept: acceptable bytes
+ * Return: returns a pointer to s where a match is found, or NULL
  */
 
 char *_strpbrk(char *s, char *accept)
