@@ -1,15 +1,13 @@
 #include "holberton.h"
 
 /**
- * function_name - Short description, single line
- * @parameterx: Description of parameter x
+ * set_string - sets value of a pointer to a char
  *
- * Description: Longer description of the function)?
- *
+ * @s: double pointer to a string
+ * @to: pointer to the string to set s to
  * Return: Description of the returned value
  */
-
-int main(void)
+void set_string(char **s, char *to)
 {
-	return (0);
+	*s = to;
 }
