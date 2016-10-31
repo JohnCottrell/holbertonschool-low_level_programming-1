@@ -1,12 +1,11 @@
 #include "holberton.h"
 
 /**
- * print_chessboard - prints a chessboard!
- *
- *
- * @a: double array to print
- * Return: void
+ * print_chessboard - prints a chessboard
+ * @a: chessboard value
+ * Return: none
  */
+
 void print_chessboard(char (*a)[8])
 {
 	int i, j;
