@@ -1,15 +1,30 @@
 #include "holberton.h"
 
 /**
- * function_name - Short description, single line
- * @parameterx: Description of parameter x
+ * print_chessboard - prints a chessboard!
  *
- * Description: Longer description of the function)?
  *
- * Return: Description of the returned value
+ * @a: double array to print
+ * Return: void
  */
-
-int main(void)
+void print_chessboard(char (*a)[8])
 {
-	return (0);
+	int i, j;
+
+	i = 0;
+	j = 0;
+	while (i != 7 || j != 7)
+	{
+		_putchar(a[i][j]);
+		if (j == 7)
+		{
+			_putchar('\n');
+			j = 0;
+			i++;
+		}
+		else
+			j++;
+	}
+	_putchar(a[i][j]);
+	_putchar(10);
 }
