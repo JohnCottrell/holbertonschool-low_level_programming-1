@@ -2,12 +2,11 @@
 #include <stdio.h>
 
 /**
- * function_name - Short description, single line
- * @parameterx: Description of parameter x
+ * _strstr - locates a substring inside a string
  *
- * Description: Longer description of the function)?
- *
- * Return: Description of the returned value
+ * @haystack: string to search
+ * @needle: substring to search for
+ * Return: returns pointer to location of substring inside haystack or NULL
  */
 
 char *_strstr(char *haystack, char *needle)
