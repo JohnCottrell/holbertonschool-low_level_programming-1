@@ -1,28 +1,23 @@
 #include "holberton.h"
 
 /**
- * function_name - Short description, single line
- * @parameterx: Description of parameter x
+ * factorial - get factorial of a number, recursively
  *
- * Description: Longer description of the function)?
  *
- * Return: Description of the returned value
+ * @n: number to get factorial of
+ * Return: factorial of n, as an int
  */
-
 int factorial(int n)
 {
 	int fact;
 
 	fact = 0;
 	if (n < 0)
-		return -1;
+		return (-1);
 	if (n == 0)
-		return 1;
+		return (1);
 	if (n == 1)
-		return 1;
-	else
-	{
-		fact = n * factorial(n - 1);
-		return fact;
-	}
+		return (1);
+	fact = n * factorial(n - 1);
+	return (fact);
 }
