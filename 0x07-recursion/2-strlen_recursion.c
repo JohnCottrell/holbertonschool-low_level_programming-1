@@ -1,17 +1,16 @@
 #include "holberton.h"
 
 /**
- * function_name - Short description, single line
- * @parameterx: Description of parameter x
+ * _strlen_recursion - get length of string, recursively
  *
- * Description: Longer description of the function)?
  *
- * Return: Description of the returned value
+ * @s: string to get length of
+ * Return: length of string as an int
  */
 
 int _strlen_recursion(char *s)
 {
 	if (s[0] != '\0')
-		return _strlen_recursion(++s)+1;
-	return 0;
+		return (_strlen_recursion(++s) + 1);
+	return (0);
 }
