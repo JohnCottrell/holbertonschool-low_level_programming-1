@@ -1,12 +1,11 @@
 #include "holberton.h"
 
 /**
- * function_name - Short description, single line
- * @parameterx: Description of parameter x
+ * _puts_recursion - Recursive function to print entire string using puts
  *
- * Description: Longer description of the function)?
  *
- * Return: Description of the returned value
+ * @s: string to print
+ * Return: void
  */
 
 void _puts_recursion(char *s)
