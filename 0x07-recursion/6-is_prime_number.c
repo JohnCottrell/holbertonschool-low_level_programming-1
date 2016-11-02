@@ -25,8 +25,8 @@ int prime_helper(int n, int c)
  */
 int is_prime_number(int n)
 {
-	if (n < 0)
-		n *= -1;
+	if (n <= 0)
+		return (0);
 	if (n % 2 == 0)
 		return (0);
 	if (n == 1)
