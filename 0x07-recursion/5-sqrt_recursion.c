@@ -1,15 +1,12 @@
 #include "holberton.h"
 
 /**
- * function_name - Short description, single line
- * @parameterx: Description of parameter x
+ * sqrt_helper - helper function for sqrt
  *
- * Description: Longer description of the function)?
- *
- * Return: Description of the returned value
+ * @n: number to square
+ * @c: counter for finding square
+ * Return: returns square when completed, or returns itself recursively
  */
-
-
 int sqrt_helper(int n, int c)
 {
 	int sum;
@@ -22,11 +19,18 @@ int sqrt_helper(int n, int c)
 	return (sqrt_helper(n, ++c));
 }
 
+/**
+ * _sqrt_recursion - recursive sqrt implementation, for natural sqrs
+ *
+ *
+ * @n: number to square
+ * Return: returns -1 if no natural square, otherwise returns square
+ */
 int _sqrt_recursion(int n)
 {
 	if (n < 0)
-		return -1;
+		return (-1);
 	if (n == 0)
-		return 1;
-	return sqrt_helper(n, 2);
+		return (1);
+	return (sqrt_helper(n, 2));
 }
