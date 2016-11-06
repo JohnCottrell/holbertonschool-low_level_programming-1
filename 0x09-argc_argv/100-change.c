@@ -9,7 +9,7 @@
  */
 int main(int argc, char *argv[])
 {
-	int input,  coins;
+	int input, coins;
 
 	if (argc != 2)
 	{
@@ -18,7 +18,11 @@ int main(int argc, char *argv[])
 	}
 
 	input = atoi(argv[1]);
-
+	if (input < 0)
+	{
+		printf("%d\n", 0);
+		return (0);
+	}
 	coins = 0;
 	while (input >= 25)
 	{
