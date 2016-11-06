@@ -33,9 +33,18 @@ int main(int argc, char *argv[])
 	while (input >= 5)
 	{
 		input -= 5;
-			coins++;
+		coins++;
 	}
-	coins += input;
+	if (input % 2 != 0)
+	{
+		coins++;
+		input -= 1;
+	}
+	while (input != 0)
+	{
+		coins++;
+		input -= 2;
+	}
 
 	printf("%d\n", coins);
 	return (0);
