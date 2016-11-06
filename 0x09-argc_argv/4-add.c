@@ -2,6 +2,7 @@
 #include <stdlib.h>
 #include <string.h>
 #include <ctype.h>
+#include "holberton.h"
 
 /**
  * isnumber - determines if input is a number or not
