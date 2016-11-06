@@ -2,10 +2,10 @@
 #include <stdlib.h>
 
 /**
- * main - prints number of arguments given to program
- * @argv: arguments
+ * main - prints least amount of change necessary
+ * @argv: arguments given
  * @argc: number of arguments
- * Return: always zero
+ * Return: zero on success, 1 on error
  */
 int main(int argc, char *argv[])
 {
@@ -38,4 +38,5 @@ int main(int argc, char *argv[])
 	coins += input;
 
 	printf("%d", coins);
+	return (0);
 }
