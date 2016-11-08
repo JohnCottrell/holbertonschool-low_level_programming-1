@@ -1,0 +1,45 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+#include "holberton.h"
+
+/**
+ * _memset - fills memory with constant bytes
+ *
+ * @s: location to fill
+ * @b: char to fill location with
+ * @n: number of bytes to fill
+ * Return: returns pointer to location filled
+ */
+int *_memset(int *s, int b, unsigned int n)
+{
+	int i;
+
+	i = 0;
+	while (n > 0)
+	{
+		s[i] = b;
+		i++;
+		n--;
+	}
+	return (s);
+}
+
+int **alloc_grid(int width, int height)
+{
+	int **grid, i, j, k;
+
+	grid = (int**)malloc(height*sizeof(int*));
+	for (i = 0; i < height; i++)
+	{
+		grid[i] = (int*)malloc(width*sizeof(int));
+	}
+	for (j = 0; j < height; j++)
+	{
+		for (k = 0; k < width; k++)
+		{
+			grid[j][k] = 0;
+		}
+	}
+	return grid;
+}

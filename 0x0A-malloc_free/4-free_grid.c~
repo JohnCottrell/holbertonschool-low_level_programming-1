@@ -1,0 +1,13 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include "holberton.h"
+
+void print_grid(int **grid, int width, int height)
+{
+	int i;
+	(void) width;
+
+	for (i = 0; i < height; i++)
+		free(grid[i]);
+	free(grid);
+}
