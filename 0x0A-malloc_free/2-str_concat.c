@@ -47,7 +47,7 @@ char *_strcpy(char *dest, char *src)
 }
 
 /**
- * string_concat - concatenates two strings to a new string
+ * str_concat - concatenates two strings to a new string
  *
  *
  * @s1: first string
