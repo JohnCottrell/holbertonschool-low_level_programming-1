@@ -27,7 +27,14 @@ char *_memset(char *s, char b, unsigned int n)
 	return (s);
 }
 
-
+/**
+ * create_array - creates an array of chars,  and initalizes it with specific
+ * characters
+ *
+ * @size: size of array
+ * @c: character to initialize array with
+ * Return: returns pointer to array
+ */
 char *create_array(unsigned int size, char c)
 {
 	char *str;
@@ -36,7 +43,7 @@ char *create_array(unsigned int size, char c)
 	arsize = (sizeof(char) * (int)size);
 	str = malloc(arsize);
 	if (str == NULL)
-		return NULL;
+		return (NULL);
 	_memset(str, c, size);
-	return str;
+	return (str);
 }
