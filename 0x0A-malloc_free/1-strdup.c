@@ -28,7 +28,6 @@ int _strlen(char *s)
  * @dest: buffer to copy string into
  * Return: returns pointer to copied string
  */
-
 char *_strcpy(char *dest, char *src)
 {
 	int i;
@@ -47,13 +46,21 @@ char *_strcpy(char *dest, char *src)
 	return (retval);
 }
 
+/**
+ * _strdup - duplicates a string to a newly allocated space
+ *
+ *
+ *
+ * @str: string to duplicate
+ * Return: returns pointer to duplicated string
+ */
 char *_strdup(char *str)
 {
 	char *dupe;
 
-	dupe = malloc(_strlen (str) + 1);
+	dupe = malloc(_strlen(str) + 1);
 	if (dupe == NULL)
-		return NULL;
-	_strcpy(dupe,str);
-	return dupe;
+		return (NULL);
+	_strcpy(dupe, str);
+	return (dupe);
 }
