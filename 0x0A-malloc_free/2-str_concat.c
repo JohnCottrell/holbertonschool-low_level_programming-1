@@ -28,7 +28,6 @@ int _strlen(char *s)
  * @dest: buffer to copy string into
  * Return: returns pointer to copied string
  */
-
 char *_strcpy(char *dest, char *src)
 {
 	int i;
@@ -47,6 +46,14 @@ char *_strcpy(char *dest, char *src)
 	return (retval);
 }
 
+/**
+ * string_concat - concatenates two strings to a new string
+ *
+ *
+ * @s1: first string
+ * @s2: second string
+ * Return: returns pointer to completed string
+ */
 char *string_concat(char *s1, char *s2)
 {
 	char *new;
@@ -55,12 +62,11 @@ char *string_concat(char *s1, char *s2)
 	size = (_strlen(s1) + _strlen(s2) + 1);
 	new = malloc(size);
 	if (new == NULL)
-		return NULL;
-
+		return (NULL);
 	_strcpy(new, s1);
 	i = _strlen(s1);
 	for (i = _strlen(s1), j = 0; i != size && s2[j] != '\0'; i++, j++)
 		new[i] = s2[j];
 	new[i] = '\0';
-	return new;
+	return (new);
 }
