@@ -3,6 +3,13 @@
 #include <string.h>
 #include "holberton.h"
 
+/**
+ * alloc_grid - allocate a 2d integer grid
+ *
+ * @width: width of grid
+ * @height: height of grid
+ * return: returns pointer to grid created
+ */
 int **alloc_grid(int width, int height)
 {
 	int **grid, i, j, k;
