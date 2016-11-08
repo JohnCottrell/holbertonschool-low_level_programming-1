@@ -54,7 +54,7 @@ char *_strcpy(char *dest, char *src)
  * @s2: second string
  * Return: returns pointer to completed string
  */
-char *string_concat(char *s1, char *s2)
+char *str_concat(char *s1, char *s2)
 {
 	char *new;
 	int i, j, size;
