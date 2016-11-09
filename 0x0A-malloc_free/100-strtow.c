@@ -112,7 +112,7 @@ char **strtow(char *str)
 		return (NULL);
 	wordcount = wc(str);
 	copy = _strdup(str);
-	array = malloc(wordcount * sizeof(char *) + 1);
+	array = malloc(wordcount * sizeof(char *) + 2);
 	if (array == (NULL))
 		return (NULL);
 	i = j = l = k = 0;
