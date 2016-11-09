@@ -66,7 +66,6 @@ char *argstostr(int ac, char **av)
 	string = malloc(len * sizeof(char));
 	if (string == NULL)
 		return (NULL);
-	string[0] = '\0';
 	i = 0;
 	while (i < ac)
 	{
