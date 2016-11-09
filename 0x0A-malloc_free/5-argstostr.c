@@ -92,11 +92,15 @@ char *argstostr(int ac, char **av)
 	if (ac == 0 || av == NULL)
 		return (NULL);
 	string = str_concat(av[0], "\n");
+	if (string == NULL)
+		return (NULL);
 	len = 1;
 	while (len != ac)
 	{
 		string = str_concat(string, av[len++]);
 		string = str_concat(string, "\n");
+		if (string == NULL)
+			return (NULL);
 	}
 	if (string)
 		return (string);
