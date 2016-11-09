@@ -130,9 +130,7 @@ char **strtow(char *str)
 		if (array[k] == (NULL))
 		{
 			while (k >= 0)
-			{
 				free(array[k--]);
-			}
 			free(array);
 			return (NULL);
 		}
