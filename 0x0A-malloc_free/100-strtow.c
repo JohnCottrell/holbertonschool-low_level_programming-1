@@ -141,7 +141,6 @@ char **strtow(char *str)
 		array[k++][l] = '\0';
 		i = j;
 	}
-	if (array == NULL)
-		return (NULL);
+	array[wordcount] = NULL;
 	return (array);
 }
