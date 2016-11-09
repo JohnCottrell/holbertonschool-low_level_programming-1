@@ -108,8 +108,6 @@ char **strtow(char *str)
 	int wordcount, i, j, k, l;
 	char **array, *copy;
 
-	if (str == NULL || str[0] == '\0')
-		return (NULL);
 	wordcount = wc(str);
 	copy = _strdup(str);
 	array = malloc(wordcount * sizeof(char *) + 1);
