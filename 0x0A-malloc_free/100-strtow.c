@@ -108,7 +108,7 @@ char **strtow(char *str)
 	int wordcount, i, j, k, l;
 	char **array, *copy;
 
-	if (src == NULL || src[0] == '\0')
+	if (str == NULL || str[0] == '\0')
 		return (NULL);
 	wordcount = wc(str);
 	copy = _strdup(str);
