@@ -89,6 +89,8 @@ char *argstostr(int ac, char **av)
 	char *string;
 	int len;
 
+	if (ac == 0 || av == NULL)
+		return (NULL);
 	string = str_concat(av[0], "\n");
 	len = 1;
 	while (len != ac)
