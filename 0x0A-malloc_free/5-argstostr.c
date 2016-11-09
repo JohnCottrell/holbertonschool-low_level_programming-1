@@ -60,17 +60,20 @@ char *argstostr(int ac, char **av)
 	i = 0;
 	while (i < ac)
 	{
-		len += _strlen(av[i]);
+		len += _strlen(av[i]) + 1;
 		i++;
 	}
 	string = malloc(len * sizeof(char));
 	if (string == NULL)
 		return (NULL);
+	string[0] = '\0';
 	i = 0;
-	while (i != ac)
+	while (i < ac)
 	{
 		_strcat(string, av[i++]);
 		_strcat(string, "\n");
 	}
+	if (!string)
+		return (NULL);
 	return (string);
 }
