@@ -59,6 +59,10 @@ char *str_concat(char *s1, char *s2)
 	char *new;
 	int i, j, size;
 
+	if (s1 == NULL)
+		return (s2);
+	if (s2 == NULL)
+		return (s1);
 	size = (_strlen(s1) + _strlen(s2) + 1);
 	new = malloc(size);
 	if (new == NULL)
