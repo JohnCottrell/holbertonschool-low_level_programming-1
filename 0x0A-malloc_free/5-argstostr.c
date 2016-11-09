@@ -22,58 +22,23 @@ int _strlen(char *s)
 }
 
 /**
- * _strcpy - copies an entire string to a buffer
+ * _strcat - concat strings, src appended to dest
  *
- *
- * @src: source string to copy
- * @dest: buffer to copy string into
- * Return: returns pointer to copied string
+ * @dest: destination string
+ * @src: source string
+ * Return: returns finished string
  */
-char *_strcpy(char *dest, char *src)
+char *_strcat(char *dest, char *src)
 {
-	int i;
-	char *retval;
+	int i, j;
 
-	i = 0;
-	while (src[i] != '\0')
-	{
-		dest[i] = src[i];
+	i = j = 0;
+	while (dest[i] != '\0')
 		i++;
-	}
-	dest[i] = src[i];
-
-	retval = dest;
-
-	return (retval);
-}
-
-/**
- * str_concat - concatenates two strings to a new string
- *
- *
- * @s1: first string
- * @s2: second string
- * Return: returns pointer to completed string
- */
-char *str_concat(char *s1, char *s2)
-{
-	char *new;
-	int i, j, size;
-
-	if (s1 == NULL)
-		s1 = "";
-	if (s2 == NULL)
-		s2 = "";
-	size = (_strlen(s1) + _strlen(s2) + 1);
-	new = malloc(size);
-	if (new == NULL)
-		return (NULL);
-	_strcpy(new, s1);
-	i = _strlen(s1);
-	for (i = _strlen(s1), j = 0; i != size && s2[j] != '\0'; i++, j++)
-		new[i] = s2[j];
-	new[i] = '\0';
-	return (new);
+	while (src[j] != '\0')
+		dest[i++] = src[j++];
+	dest[i] = '\0';
+	return (dest);
 }
 
 /**
@@ -87,23 +52,25 @@ char *str_concat(char *s1, char *s2)
 char *argstostr(int ac, char **av)
 {
 	char *string;
-	int len;
+	int len, i;
 
 	if (ac == 0 || av == NULL)
 		return (NULL);
-	string = str_concat(av[0], "\n");
+	len = 1;
+	i = 0;
+	while (i < ac)
+	{
+		len += _strlen(av[i]);
+		i++;
+	}
+	string = malloc(len * sizeof(char));
 	if (string == NULL)
 		return (NULL);
-	len = 1;
-	while (len != ac)
+	i = 0;
+	while (i != ac)
 	{
-		string = str_concat(string, av[len++]);
-		string = str_concat(string, "\n");
-		if (string == NULL)
-			return (NULL);
+		_strcat(string, av[i++]);
+		_strcat(string, "\n");
 	}
-	if (string)
-		return (string);
-	else
-		return (NULL);
+	return (string);
 }
