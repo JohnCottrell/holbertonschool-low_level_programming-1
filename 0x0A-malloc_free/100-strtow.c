@@ -114,7 +114,7 @@ char **strtow(char *str)
 	if (wordcount == 0)
 		return (NULL);
 	copy = _strdup(str);
-	array = malloc((wordcount + 1) * sizeof(char *));
+	array = malloc((wordcount + 1) * sizeof(*array));
 	if (array == (NULL))
 		return (NULL);
 	i = j = l = k = 0;
@@ -126,7 +126,7 @@ char **strtow(char *str)
 		j = i;
 		while (copy[j] != ' ' && copy[j] != '\0')
 			j++;
-		array[k] = malloc(sizeof(char) * (j - i));
+		array[k] = malloc(sizeof(char) * ((j - i) + 1));
 		if (array[k] == (NULL))
 		{
 			while (k >= 0)
