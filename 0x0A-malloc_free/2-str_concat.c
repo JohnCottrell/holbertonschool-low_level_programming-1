@@ -59,13 +59,13 @@ char *str_concat(char *s1, char *s2)
 	char *new;
 	int i, j, size;
 
-	if (s1 == NULL)
+	if (s1[0] == '\0')
 	{
 		new = malloc(_strlen(s2) + 1);
 		_strcpy(new, s2);
 		return (new);
 	}
-	if (s2 == NULL)
+	if (s2[0]  == '\0')
 	{
 		new = malloc(_strlen(s1) + 1);
 		_strcpy(new, s1);
