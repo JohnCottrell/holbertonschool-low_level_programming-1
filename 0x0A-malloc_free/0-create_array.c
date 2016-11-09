@@ -40,6 +40,8 @@ char *create_array(unsigned int size, char c)
 	char *str;
 	int arsize;
 
+	if (size <= 0)
+		return (NULL);
 	arsize = (sizeof(char) * (int)size);
 	str = malloc(arsize);
 	if (str == NULL)
