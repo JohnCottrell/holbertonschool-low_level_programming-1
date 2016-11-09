@@ -126,13 +126,15 @@ char **strtow(char *str)
 		j = i;
 		while (copy[j] != ' ' && copy[j] != '\0')
 			j++;
-		array[k] = malloc(sizeof(char) * ((j - i) + 1));
-		if (array[k] == (NULL))
+		array[k] = malloc(sizeof(char) * (j - i));
+		if (array[k] == NULL)
 		{
-			while (k >= 0)
-				free(array[k--]);
-			free(array);
-			return (NULL);
+			while (--k >= 0)
+			{
+				free(array[k]);
+				free(array);
+				return (NULL);
+			}
 		}
 		while (str[i] != ' ' && str[i] != '\0')
 			array[k][l++] = str[i++];
@@ -140,7 +142,6 @@ char **strtow(char *str)
 		k++;
 		i = j;
 	}
-	array[k] = NULL;
 	if (array == NULL)
 		return (NULL);
 	return (array);
