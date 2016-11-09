@@ -108,12 +108,12 @@ char **strtow(char *str)
 	int wordcount, i, j, k, l;
 	char **array, *copy;
 
-	if (str == NULL || str[0] == '\0')
+	if (str == NULL || str[0] == '\0' || wc(str) == 0)
 		return (NULL);
 	wordcount = wc(str);
-	if (wordcount == 0)
-		return (NULL);
 	copy = _strdup(str);
+	if (copy == NULL)
+		return (NULL);
 	array = malloc((wordcount + 1) * sizeof(*array));
 	if (array == (NULL))
 		return (NULL);
@@ -138,8 +138,7 @@ char **strtow(char *str)
 		}
 		while (str[i] != ' ' && str[i] != '\0')
 			array[k][l++] = str[i++];
-		array[k][l] = '\0';
-		k++;
+		array[k++][l] = '\0';
 		i = j;
 	}
 	if (array == NULL)
