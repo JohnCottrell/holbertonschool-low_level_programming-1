@@ -140,7 +140,7 @@ char **strtow(char *str)
 		k++;
 		i = j;
 	}
-	if (array = NULL)
+	if (array == NULL)
 		return (NULL);
 	return (array);
 }
