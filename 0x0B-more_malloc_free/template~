@@ -1,0 +1,14 @@
+#include <holberton.h>
+#include <stdlib.h>
+
+/**
+ * name - description
+ *
+ * @param: description
+ * Return: description
+ */
+
+name(args)
+{
+  return (0);
+}
