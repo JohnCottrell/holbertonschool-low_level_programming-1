@@ -19,12 +19,14 @@ int _strlen(char *s)
 }
 
 /**
- * name - description
+ * string_nconcat - concats two strings, using n chars from s2,
+ * or all if n is over s2
  *
- * @param: description
- * Return: description
+ * @s1: string one
+ * @s2: string two
+ * @n: bytes of s2 to use
+ * Return: returns pointer to string, or NULL if s1/s2 empty or malloc fails
  */
-
 char *string_nconcat(char *s1, char *s2, unsigned int n)
 {
 	char *newstring;
