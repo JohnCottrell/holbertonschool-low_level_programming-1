@@ -2,15 +2,10 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-/*if d is null, print nothing
-	if an element of d is null, print (nil)
-	for age, print only two digits after decimal
-	stdlib allowed
-
-	Name: Django
-	Age: 3.5
-	Owner: Jay
-*/
+/**
+ * print_dog - prints info on a dog struct
+ * @d: dog struct to print info for
+ */
 void print_dog(struct dog *d)
 {
 	if (d == NULL)
