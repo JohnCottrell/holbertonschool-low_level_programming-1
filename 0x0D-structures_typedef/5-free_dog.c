@@ -2,6 +2,10 @@
 #include <stdlib.h>
 #include "dog.h"
 
+/**
+ * free_dog - frees a dog structure
+ * @d: structure to free
+ */
 void free_dog(dog_t *d)
 {
 	free(d);
