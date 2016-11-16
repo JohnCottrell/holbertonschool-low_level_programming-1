@@ -23,11 +23,13 @@ int main(int argc, char *argv[])
 		exit(98);
 	}
 	func = get_op_func(argv[2]);
-	if ((*argv[2] == '\\' || *argv[2] == '%') && *argv[3] == '0')
+	if ((*argv[2] == '/' || *argv[2] == '%') && *argv[3] == '0')
 	{
 		printf("Error\n");
 		exit(100);
 	}
 	result = func(atoi(argv[1]), atoi(argv[3]));
 	printf("%d\n", result);
+
+	return (0);
 }
