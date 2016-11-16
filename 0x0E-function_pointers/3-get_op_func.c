@@ -24,12 +24,12 @@ int (*get_op_func(char *s))(int, int)
 	i = 0;
 	while (operator[i] != s[0])
 	{
-		i++;
-		if (i > 4)
+		if (i > 4 || s[1] != '\0')
 		{
 			printf("Error\n");
 			exit(99);
 		}
+		i++;
 	}
 	return (*p[i]);
 }
