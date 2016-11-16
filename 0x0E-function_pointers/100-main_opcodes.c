@@ -1,6 +1,13 @@
 #include <stdio.h>
 #include <stdlib.h>
 
+/**
+ * main - prints opcode of own main function
+ *
+ * @argc: argument count
+ * @argv: array of arguments
+ * Return: 1 or 2 on fail, 0 on success
+ */
 int main(int argc, char *argv[])
 {
 	int bytes, i;
@@ -19,7 +26,8 @@ int main(int argc, char *argv[])
 	}
 	pf = (unsigned char *)main;
 	i = 0;
-	while (i != bytes)
+	while (i < (bytes - 1))
 		printf("%x ", pf[i++]);
-	printf("\n");
+	printf("%x\n", pf[i]);
+	return (0);
 }
