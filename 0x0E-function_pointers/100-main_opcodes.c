@@ -26,8 +26,11 @@ int main(int argc, char *argv[])
 	}
 	pf = (unsigned char *)main;
 	i = 0;
-	while (i < (bytes - 1))
-		printf("%02x ", pf[i++]);
-	printf("%x\n", pf[i]);
+	if (bytes > 0)
+	{
+		while (i < (bytes - 1))
+			printf("%02x ", pf[i++]);
+		printf("%x\n", pf[i]);
+	}
 	return (0);
 }
