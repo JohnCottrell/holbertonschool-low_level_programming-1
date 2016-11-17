@@ -10,19 +10,18 @@
  */
 int (*get_op_func(char *s))(int, int)
 {
+	op_t ops[] = {
+		{"+", op_add},
+		{"-", op_sub},
+		{"*", op_mul},
+		{"/", op_div},
+		{"%", op_mod},
+		{NULL, NULL}
+	};
 	int i;
 
-	int (*p[5]) (int, int);
-	char operator[] = "+-*/%";
-
-	p[0] = op_add;
-	p[1] = op_sub;
-	p[2] = op_mul;
-	p[3] = op_div;
-	p[4] = op_mod;
-
 	i = 0;
-	while (operator[i] != s[0])
+	while (*(ops[i]).op != s[0])
 	{
 		if (i > 4 || s[1] != '\0')
 		{
@@ -31,5 +30,5 @@ int (*get_op_func(char *s))(int, int)
 		}
 		i++;
 	}
-	return (*p[i]);
+	return (ops[i].f);
 }
