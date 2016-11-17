@@ -1,13 +1,10 @@
 #include "3-calc.h"
-#include <string.h>
-#include <stdio.h>
 #include <stdlib.h>
-
 /**
- * get_op_func - determines which operation to use for main
+ * get_op_func - gets the right fn for main to execute
  *
- * @s: char to check
- * Return: returns pointer to appropriate function
+ * @s: pointer to char
+ * Return: appropriate calculation or NULL
  */
 int (*get_op_func(char *s))(int, int)
 {
@@ -22,14 +19,11 @@ int (*get_op_func(char *s))(int, int)
 	int i;
 
 	i = 0;
-	while (*(ops[i]).op != s[0])
+	while (i < 5)
 	{
-		if (i > 4)
-		{
-			printf("Error\n");
-			exit(99);
-		}
+		if (*(ops[i]).op == *s && *(s + 1) == '\0')
+			return (ops[i].f);
 		i++;
 	}
-	return (ops[i].f);
+	return (NULL);
 }
