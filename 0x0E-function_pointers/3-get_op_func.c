@@ -1,4 +1,5 @@
 #include "3-calc.h"
+#include <string.h>
 #include <stdio.h>
 #include <stdlib.h>
 
@@ -23,7 +24,7 @@ int (*get_op_func(char *s))(int, int)
 	i = 0;
 	while (*(ops[i]).op != s[0])
 	{
-		if (i > 4 || s[1] != '\0')
+		if (i > 4)
 		{
 			printf("Error\n");
 			exit(99);
