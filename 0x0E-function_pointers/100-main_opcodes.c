@@ -29,8 +29,8 @@ int main(int argc, char *argv[])
 	if (bytes > 0)
 	{
 		while (i < (bytes - 1))
-			printf("%02x ", pf[i++]);
-		printf("%x\n", pf[i]);
+			printf("%02hhx ", pf[i++]);
+		printf("%hhx\n", pf[i]);
 	}
 	return (0);
 }
