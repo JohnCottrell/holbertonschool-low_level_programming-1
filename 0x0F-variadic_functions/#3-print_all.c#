@@ -33,11 +33,9 @@ void print_all(const char * const format, ...)
 			break;
 		case 's':
 			tempstring = va_arg(arguments, char*);
-			if (tempstring != NULL)
-			{
+			if (tempstring == NULL)
 				printf("%s", tempstring);
-				break;
-			}
+			else
 				printf("(nil)");
 			break;
 		default:
