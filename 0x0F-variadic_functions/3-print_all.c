@@ -13,15 +13,17 @@ void print_all(const char * const format, ...)
 {
 	va_list arguments;
 	char *tempstring;
-	int i, flag;
+	int i;
 
 	va_start(arguments, format);
-	i = flag = 0;
-	while (format == NULL)
+	i = 0;
+	if (format == NULL)
+	{
+		printf("\n");
 		return;
+	}
 	while (format[i] != '\0')
 	{
-		flag = 0;
 		switch (format[i])
 		{
 		case 'c':
@@ -42,13 +44,10 @@ void print_all(const char * const format, ...)
 			}
 			printf("(nil)");
 			break;
-		default:
-			flag = 1;
 		}
-		if (format[i + 1] != '\0' && flag == 0)
+		if ((format[i] == 'c' || format[i] == 'i' || format[i] == 'f' ||
+		    format[i] == 's') && format[++i] != '\0')
 			printf(", ");
-		i++;
 	}
 	printf("\n");
-	va_end(arguments);
 }
