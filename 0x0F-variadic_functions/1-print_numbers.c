@@ -15,6 +15,12 @@ void print_numbers(const char *separator, const unsigned int n, ...)
 	va_list arguments;
 	int i;
 
+	if (n < 1)
+	{
+		putchar('\n');
+		return;
+	}
+
 	va_start(arguments, n);
 	i = 0;
 	while (i < (int) n)
