@@ -1,0 +1,7 @@
+#include "lists.h"
+#include <string.h>
+
+head;
+
+	return (newnode);
+}
