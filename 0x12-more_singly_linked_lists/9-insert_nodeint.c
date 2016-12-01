@@ -16,19 +16,15 @@ listint_t *insert_nodeint_at_index(listint_t **head, unsigned int index, int n)
 	if (head == NULL || *head == NULL)
 		return (NULL);
 	walk = *head;
-
 	len = 0;
 	while (walk->next != NULL)
 	{
 		walk = walk->next;
 		len++;
 	}
-
 	if (index > len)
 		return (NULL);
-
 	walk = *head;
-
 	if (index == 0)
 		return (add_nodeint(head, n));
 	if (index == len)
@@ -41,7 +37,6 @@ listint_t *insert_nodeint_at_index(listint_t **head, unsigned int index, int n)
 		walk = walk->next;
 		i++;
 	}
-
 	new = malloc(sizeof(listint_t));
 	if (new == NULL)
 		return (NULL);
