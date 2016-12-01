@@ -8,38 +8,26 @@
  */
 size_t print_listint_safe(const listint_t *head)
 {
-	listint_t *slowwalk, *fastwalk;
-	int i, passed;
+	listptr_t *ptrhead, *walk;
+	int i;
 
+	ptrhead = NULL;
 	if (head == NULL)
 		exit(98);
-	i = passed = 0;
-	fastwalk = slowwalk = head->next;
-	while (slowwalk != NULL && fastwalk != NULL && fastwalk->next != NULL)
-	{
-		slowwalk = slowwalk->next;
-		fastwalk = fastwalk->next->next;
-		if (slowwalk == fastwalk)
-		{
-			passed = 1;
-			break;
-		}
-	}
-	if (passed == 1)
-	{
-		slowwalk = findloop(head, fastwalk);
-		passed = 0;
-	}
-	else
-		slowwalk = NULL;
 	while (head != NULL)
 	{
 		printf("[%p] %d\n", (void *) head, head->n);
 		i++;
-		if (slowwalk == head)
+		ptrhead = add_ptr(&ptrhead, head);
+		walk = ptrhead;
+		while (walk != NULL)
 		{
-			printf("-> [%p] %d\n", (void *) head->next, head->next->n);
-			break;
+			if (walk->list == head->next)
+			{
+				printf("-> [%p] %d\n", (void *) head->next, head->next->n);
+				return (i);
+			}
+			walk = walk->next;
 		}
 		head = head->next;
 	}
@@ -47,28 +35,22 @@ size_t print_listint_safe(const listint_t *head)
 }
 
 /**
- * findloop - finds the looped node in a linked list
+ * add_ptr - adds a node to the beginning of a listptr_t
  *
- * @head: head pointer for list
- * @loop: any known looping node
- * Return: Returns end of list
+ * @head: head for listptr_t struct
+ * @ptr: ptr to add address of
+ * Return: returns address of new node
  */
-listint_t *findloop(const listint_t *head, listint_t *loop)
+listptr_t *add_ptr(listptr_t **head, const listint_t *ptr)
 {
-	listint_t *walker, *crawler;
+	listptr_t *new;
 
-	walker = head->next;
-	crawler = NULL;
-	while (walker != crawler)
-	{
-		crawler = walker->next;
-		while (crawler != NULL && crawler != walker && crawler != loop)
-		{
-			if (crawler->next == walker)
-				return (crawler);
-			crawler = crawler->next;
-		}
-		walker = walker->next;
-	}
-	return (walker);
+	new = malloc(sizeof(listptr_t));
+	if (new == NULL)
+		return (NULL);
+	new->list = ptr;
+	new->next = *head;
+	*head = new;
+
+	return (new);
 }
