@@ -12,8 +12,6 @@ size_t print_listint_safe(const listint_t *head)
 	int i;
 
 	ptrhead = NULL;
-	if (head == NULL)
-		exit(98);
 	i = 0;
 	while (head != NULL)
 	{
@@ -51,7 +49,10 @@ listptr_t *add_ptr(listptr_t **head, const listint_t *ptr)
 
 	new = malloc(sizeof(listptr_t));
 	if (new == NULL)
-		return (NULL);
+	{
+		free_ptr(*head);
+		exit(98);
+	}
 	new->list = ptr;
 	new->next = *head;
 	*head = new;
