@@ -33,6 +33,7 @@ size_t print_listint_safe(const listint_t *head)
 		}
 		head = head->next;
 	}
+	free_ptr(ptrhead);
 	return (i);
 }
 
