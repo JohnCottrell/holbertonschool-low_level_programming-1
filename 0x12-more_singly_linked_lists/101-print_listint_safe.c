@@ -26,6 +26,7 @@ size_t print_listint_safe(const listint_t *head)
 			if (walk->list == head->next)
 			{
 				head = head->next;
+				free_ptr(ptrhead);
 				printf("-> [%p] %d\n", (void *)head, head->n);
 				return (i);
 			}
