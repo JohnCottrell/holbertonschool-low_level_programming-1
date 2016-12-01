@@ -2,10 +2,10 @@
 #include <stdbool.h>
 
 /**
- * print_listint_safe - prints a listint, can handle looped lists
+ * find_listint_loop - finds a loop in a listint_t linked list
  *
  * @head: head pointer for list
- * Return: Returns number of nodes in list
+ * Return: Returns start of loop
  */
 listint_t *find_listint_loop(listint_t *head)
 {
