@@ -1,27 +1,6 @@
 #include "lists.h"
 
 /**
- * add_nodeint - adds a node to the beginning of a listint_t struct
- *
- * @head: head for listint_t struct
- * @n: value to add to new node
- * Return: returns new node
- */
-listint_t *add_nodeint(listint_t **head, const int n)
-{
-	listint_t *new;
-
-	new = malloc(sizeof(listint_t));
-	if (new == NULL)
-		return (NULL);
-	new->n = n;
-	new->next = *head;
-	*head = new;
-
-	return (new);
-}
-
-/**
  * insert_nodeint_at_index - inserts a node to a given position in a listint_t
  *
  * @head: head for listint_t struct
@@ -71,4 +50,25 @@ listint_t *insert_nodeint_at_index(listint_t **head, unsigned int index, int n)
 	last->next = new;
 
 	return (walk);
+}
+
+/**
+ * add_nodeint - adds a node to the beginning of a listint_t struct
+ *
+ * @head: head for listint_t struct
+ * @n: value to add to new node
+ * Return: returns new node
+ */
+listint_t *add_nodeint(listint_t **head, const int n)
+{
+	listint_t *new;
+
+	new = malloc(sizeof(listint_t));
+	if (new == NULL)
+		return (NULL);
+	new->n = n;
+	new->next = *head;
+	*head = new;
+
+	return (new);
 }
