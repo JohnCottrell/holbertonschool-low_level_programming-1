@@ -17,7 +17,7 @@ size_t print_listint_safe(const listint_t *head)
 	i = 0;
 	while (head != NULL)
 	{
-		printf("[%p] %d\n", (void *) head, head->n);
+		printf("[%p] %d\n", (void *)head, head->n);
 		i++;
 		ptrhead = add_ptr(&ptrhead, head);
 		walk = ptrhead;
@@ -26,7 +26,7 @@ size_t print_listint_safe(const listint_t *head)
 			if (walk->list == head->next)
 			{
 				head = head->next;
-				printf("-> [%p] %d\n", (void *) head, head->n);
+				printf("-> [%p] %d\n", (void *)head, head->n);
 				return (i);
 			}
 			walk = walk->next;
