@@ -1,0 +1,17 @@
+#include "lists.h"
+
+listint_t *reverse_listint(listint_t **head)
+{
+	listint_t *list, *temp;
+
+	list = 0;
+	while (*head != NULL) //head = 0
+	{
+		temp = (*head)->next;
+		(*head)->next = list;
+		list = (*head);
+		(*head) = temp;
+	}
+	(*head) = list;
+	return (*head);
+}
