@@ -25,7 +25,8 @@ size_t print_listint_safe(const listint_t *head)
 		{
 			if (walk->list == head->next)
 			{
-				printf("-> [%p] %d\n", (void *) head->next, head->next->n);
+				head = head->next;
+				printf("-> [%p] %d\n", (void *) head, head->n);
 				return (i);
 			}
 			walk = walk->next;
@@ -54,4 +55,22 @@ listptr_t *add_ptr(listptr_t **head, const listint_t *ptr)
 	*head = new;
 
 	return (new);
+}
+
+/**
+ * free_ptr - frees memory allocated for a listptr
+ *
+ * @head: head for listptr_t struct
+ */
+void free_ptr(listptr_t *head)
+{
+	listptr_t *temp;
+
+	temp = head;
+	while (head != NULL)
+	{
+		temp = head;
+		head = head->next;
+		free(temp);
+	}
 }

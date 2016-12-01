@@ -51,4 +51,5 @@ size_t free_listint_safe(listint_t **h);
 listint_t *find_listint_loop(listint_t *head);
 listint_t *findloop(const listint_t *head, listint_t *walker);
 listptr_t *add_ptr(listptr_t **head, const listint_t *ptr);
+void free_ptr(listptr_t *head);
 #endif
