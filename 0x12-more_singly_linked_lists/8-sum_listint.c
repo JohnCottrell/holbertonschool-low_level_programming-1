@@ -9,10 +9,11 @@
 int sum_listint(listint_t *head)
 {
 	listint_t *walk;
-	int sum;
+	unsigned int sum;
 
 	if (head == NULL)
 		return (0);
+	sum = 0;
 	walk = head;
 	while (walk != NULL)
 	{
