@@ -12,7 +12,7 @@ size_t print_listint_safe(const listint_t *head)
 	int i, passed;
 
 	if (head == NULL)
-		return (98);
+		exit(98);
 	i = passed = 0;
 	fastwalk = slowwalk = head->next;
 	while (slowwalk != NULL && fastwalk != NULL && fastwalk->next != NULL)
