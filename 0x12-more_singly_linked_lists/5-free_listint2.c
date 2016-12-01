@@ -13,12 +13,17 @@ void free_listint2(listint_t **head)
 	walk = *head;
 	if (walk == NULL)
 		return;
-	while (walk->next != NULL)
+	if (walk->next == NULL)
+		free(walk);
+	else
 	{
-		tmp = walk;
-		walk = walk->next;
-		free(tmp);
+		while (walk->next != NULL)
+		{
+			tmp = walk;
+			walk = walk->next;
+			free(tmp);
+		}
+		free(walk);
 	}
-	free (walk);
 	*head = NULL;
 }
