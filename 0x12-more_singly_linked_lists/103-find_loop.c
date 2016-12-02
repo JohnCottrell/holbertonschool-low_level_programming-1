@@ -11,7 +11,6 @@ listint_t *find_listint_loop(listint_t *head)
 {
 	listint_t *walker, *crawler;
 
-	printf("hello weird");
 	if (head == NULL || head->next == NULL)
 	{
 		return (NULL);
