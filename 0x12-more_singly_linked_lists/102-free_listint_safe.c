@@ -11,30 +11,24 @@ size_t free_listint_safe(listint_t **h)
 {
 	listptr_t *ptrhead, *ptrwalk;
 	listint_t *tmp, *walk;
-	int i, brake;
+	int i;
 
-	if (h == NULL)
-		return (0);
 	walk = *h;
-	ptrhead = ptrwalk = NULL;
-	i = brake = 0;
+	ptrhead = NULL;
+	i = 0;
 	while (walk != NULL)
 	{
 		ptrwalk = ptrhead;
 		while (ptrwalk != NULL)
 		{
-			if (ptrwalk->list == walk->next)
+			if (ptrwalk->list == walk)
 			{
 				free(walk);
-				i++;
-				brake = 1;
-				break;
+				free_ptr(ptrhead);
+				*h = NULL;
+				return (i);
 			}
 			ptrwalk = ptrwalk->next;
-		}
-		if (brake == 1)
-		{
-			break;
 		}
 		tmp = walk;
 		add_ptr(&ptrhead, walk);
@@ -42,6 +36,7 @@ size_t free_listint_safe(listint_t **h)
 		free(tmp);
 		i++;
 	}
+	ptrhead = NULL;
 	*h = NULL;
 	free_ptr(ptrhead);
 	return (i);
