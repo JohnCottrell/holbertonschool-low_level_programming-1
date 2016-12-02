@@ -85,18 +85,18 @@ listint_t *insert_nodeint_at_index(listint_t **head, unsigned int index, int n)
 	if (new == NULL)
 		return (NULL);
 	new->n = n;
-	while (i != index - 1)
+	while (i < index - 1)
 	{
-		walk = walk->next;
-		if (walk == NULL && index > 0)
+		if (walk->next == NULL && index > 0)
 		{
 			free(new);
 			return (NULL);
 		}
+		walk = walk->next;
 		i++;
 	}
 	new->next = walk->next;
 	walk->next = new;
 
-	return (walk);
+	return (new);
 }
