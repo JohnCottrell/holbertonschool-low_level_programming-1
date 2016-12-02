@@ -68,17 +68,17 @@ listint_t *insert_nodeint_at_index(listint_t **head, unsigned int index, int n)
 		return (NULL);
 	walk = *head;
 	len = 0;
-	while (walk->next != NULL)
+	while (walk != NULL)
 	{
 		walk = walk->next;
 		len++;
 	}
-	if (index > len)
+	if (index >= len)
 		return (NULL);
 	walk = *head;
 	if (index == 0)
 		return (add_nodeint(head, n));
-	if (index == len)
+	if (index == (len - 1))
 		return (add_nodeint_end(head, n));
 	i = 0;
 	new = malloc(sizeof(listint_t));
