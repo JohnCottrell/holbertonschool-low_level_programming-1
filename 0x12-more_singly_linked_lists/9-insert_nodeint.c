@@ -62,17 +62,18 @@ listint_t *add_nodeint(listint_t **head, const int n)
 listint_t *insert_nodeint_at_index(listint_t **head, unsigned int index, int n)
 {
 	unsigned int i, len;
-	listint_t *walk, *new, *last;
+	listint_t *walk, *new;
 
-	if (head == NULL || *head == NULL)
+	if (*head == NULL && index != 0)
 		return (NULL);
 	walk = *head;
 	len = 0;
-	while (walk->next != NULL)
+	while (walk != NULL)
 	{
 		walk = walk->next;
 		len++;
 	}
+	printf("len: %d", len);
 	if (index > len)
 		return (NULL);
 	walk = *head;
@@ -81,19 +82,22 @@ listint_t *insert_nodeint_at_index(listint_t **head, unsigned int index, int n)
 	if (index == len)
 		return (add_nodeint_end(head, n));
 	i = 0;
-	while (i != index)
-	{
-		if ((i + 1) == index)
-			last = walk;
-		walk = walk->next;
-		i++;
-	}
 	new = malloc(sizeof(listint_t));
 	if (new == NULL)
 		return (NULL);
 	new->n = n;
-	new->next = walk;
-	last->next = new;
+	while (i != index - 1)
+	{
+		walk = walk->next;
+		if (walk == NULL && ((index - i) > 0))
+		{
+			free(new);
+			return(NULL);
+		}
+		i++;
+	}
+	new->next = walk->next;
+	walk->next = new;
 
 	return (walk);
 }
