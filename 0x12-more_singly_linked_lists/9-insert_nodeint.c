@@ -73,7 +73,6 @@ listint_t *insert_nodeint_at_index(listint_t **head, unsigned int index, int n)
 		walk = walk->next;
 		len++;
 	}
-	printf("len: %d", len);
 	if (index > len)
 		return (NULL);
 	walk = *head;
