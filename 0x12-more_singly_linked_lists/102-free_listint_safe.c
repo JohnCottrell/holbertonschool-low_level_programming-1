@@ -5,6 +5,7 @@
  * and sets head to NULL, safe for looped structs
  *
  * @h: head for listint_t struct
+ * Return: returns number of nodes in list_t
  */
 size_t free_listint_safe(listint_t **h)
 {
@@ -25,7 +26,6 @@ size_t free_listint_safe(listint_t **h)
 			if (ptrwalk->list == walk->next)
 			{
 				free(walk);
-				free_ptr(ptrhead);
 				brake = 1;
 				break;
 			}
