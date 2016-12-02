@@ -1,6 +1,55 @@
 #include "lists.h"
 
-listint_t *add_nodeint(listint_t **head, const int n);
+/**
+ * add_nodeint_end - adds a node to the end of a listint_t struct
+ *
+ * @head: head for listint_t struct
+ * @n: value to add to new node
+ * Return: returns new node
+ */
+listint_t *add_nodeint_end(listint_t **head, const int n)
+{
+	listint_t *temp, *new;
+
+	new = malloc(sizeof(listint_t));
+	if (new == NULL)
+		return (NULL);
+	new->n = n;
+	new->next = NULL;
+	if (*head == NULL)
+	{
+		*head = new;
+	}
+	else
+	{
+		temp = *head;
+		while (temp->next != NULL)
+			temp = temp->next;
+		temp->next = new;
+	}
+	return (new);
+}
+
+/**
+ * add_nodeint - adds a node to the beginning of a listint_t struct
+ *
+ * @head: head for listint_t struct
+ * @n: value to add to new node
+ * Return: returns new node
+ */
+listint_t *add_nodeint(listint_t **head, const int n)
+{
+	listint_t *new;
+
+	new = malloc(sizeof(listint_t));
+	if (new == NULL)
+		return (NULL);
+	new->n = n;
+	new->next = *head;
+	*head = new;
+
+	return (new);
+}
 
 /**
  * insert_nodeint_at_index - inserts a node to a given position in a listint_t
@@ -47,25 +96,4 @@ listint_t *insert_nodeint_at_index(listint_t **head, unsigned int index, int n)
 	last->next = new;
 
 	return (walk);
-}
-
-/**
- * add_nodeint - adds a node to the beginning of a listint_t struct
- *
- * @head: head for listint_t struct
- * @n: value to add to new node
- * Return: returns new node
- */
-listint_t *add_nodeint(listint_t **head, const int n)
-{
-	listint_t *new;
-
-	new = malloc(sizeof(listint_t));
-	if (new == NULL)
-		return (NULL);
-	new->n = n;
-	new->next = *head;
-	*head = new;
-
-	return (new);
 }
