@@ -26,6 +26,7 @@ size_t free_listint_safe(listint_t **h)
 			if (ptrwalk->list == walk->next)
 			{
 				free(walk);
+				i++;
 				brake = 1;
 				break;
 			}
