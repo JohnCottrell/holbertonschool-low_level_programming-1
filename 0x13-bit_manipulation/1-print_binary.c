@@ -9,7 +9,7 @@
 
 void print_binary(unsigned long int n)
 {
-	unsigned int i, temp;
+	unsigned int i, temp, cntr;
 
 	i = 1;
 	if (n == 0)
@@ -17,15 +17,17 @@ void print_binary(unsigned long int n)
 		putchar('0');
 		return;
 	}
-	if (n == 1)
-	{
-		putchar('1');
-		return;
-	}
 	i = 1;
+	cntr = 0;
 	while (i <= n)
+	{
 		i = i << 1;
-	i = i >> 1;
+		cntr++;
+		if (cntr > 30)
+			break;
+	}
+	if (cntr != 31)
+		i = i >> 1;
 	while (i != 0)
 	{
 		temp = i & n;
