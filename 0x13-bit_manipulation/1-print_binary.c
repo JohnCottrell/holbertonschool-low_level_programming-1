@@ -14,10 +14,14 @@ void print_binary(unsigned long int n)
 	unsigned long int i, temp, cntr;
 
 	cntr = 0;
-	i = 1;
 	if (n == 0)
 	{
 		_putchar('0');
+		return;
+	}
+	if (n == 1)
+	{
+		_putchar('1');
 		return;
 	}
 	_putchar('1');
@@ -30,7 +34,7 @@ void print_binary(unsigned long int n)
 		if (cntr >= 62)
 			break;
 	}
-	if (cntr != 61)
+	if (cntr != 62)
 		i = i >> 1;
 	while (i != 0)
 	{
