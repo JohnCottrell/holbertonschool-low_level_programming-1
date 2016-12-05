@@ -10,22 +10,16 @@
  */
 unsigned int flip_bits(unsigned long int n, unsigned long int m)
 {
-	unsigned int or, i, retval, temp;
+	unsigned int or, retval, temp;
 
-	if (n == m)
-		return (0);
 	or = n ^ m;
-	i = 1;
 	retval = 0;
-	while (i <= or)
-		i = i << 1;
-	i = i >> 1;
-	while (i != 0)
+	while (or != 0)
 	{
-		temp = i & or;
+		temp = or & 1;
 		if (temp != 0)
 			retval++;
-		i = i >> 1;
+		or = or >> 1;
 	}
 	return (retval);
 }
