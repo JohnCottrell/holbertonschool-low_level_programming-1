@@ -11,10 +11,20 @@ void print_binary(unsigned long int n)
 {
 	unsigned int i, temp, cntr;
 
+	cntr = 0;
+	if (n == 4294967295)
+	{
+		while (cntr != 32)
+		{
+			_putchar('1');
+			cntr++;
+		}
+		return;
+	}
 	i = 1;
 	if (n == 0)
 	{
-		putchar('0');
+		_putchar('0');
 		return;
 	}
 	i = 1;
@@ -23,18 +33,15 @@ void print_binary(unsigned long int n)
 	{
 		i = i << 1;
 		cntr++;
-		if (cntr > 30)
-			break;
 	}
-	if (cntr != 31)
-		i = i >> 1;
+	i = i >> 1;
 	while (i != 0)
 	{
 		temp = i & n;
 		if (temp != 0)
-			putchar('1');
+			_putchar('1');
 		else
-			putchar('0');
+			_putchar('0');
 		i = i >> 1;
 	}
 }
