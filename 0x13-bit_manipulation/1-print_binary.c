@@ -24,7 +24,6 @@ void print_binary(unsigned long int n)
 		_putchar('1');
 		return;
 	}
-	_putchar('1');
 	i = 2;
 	cntr = 0;
 	while (i <= n)
