@@ -10,7 +10,8 @@
  */
 unsigned int flip_bits(unsigned long int n, unsigned long int m)
 {
-	unsigned int or, retval;
+	unsigned long int or;
+	unsigned int retval;
 
 	or = n ^ m;
 	retval = 0;
