@@ -12,15 +12,6 @@ void print_binary(unsigned long int n)
 	unsigned int i, temp, cntr;
 
 	cntr = 0;
-	if (n == 4294967295)
-	{
-		while (cntr != 32)
-		{
-			_putchar('1');
-			cntr++;
-		}
-		return;
-	}
 	i = 1;
 	if (n == 0)
 	{
