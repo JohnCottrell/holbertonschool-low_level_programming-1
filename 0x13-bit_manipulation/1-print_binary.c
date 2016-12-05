@@ -1,5 +1,6 @@
 #include "holberton.h"
 #include <stdio.h>
+#include <unistd.h>
 
 /**
  * print_binary - prints a long int out as a binary number
