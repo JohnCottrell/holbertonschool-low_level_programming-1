@@ -14,10 +14,10 @@ unsigned int flip_bits(unsigned long int n, unsigned long int m)
 
 	or = n ^ m;
 	retval = 0;
-	while (or)
+	while (or > 0)
 	{
 		temp = or & 1;
-		if (temp)
+		if (temp != 0)
 			retval++;
 		or = or >> 1;
 	}
