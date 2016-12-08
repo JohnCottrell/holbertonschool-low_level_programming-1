@@ -26,7 +26,7 @@ int create_file(const char *filename, char *text_content)
 		}
 		retval = write(file, text_content, i);
 	}
-	if (retval == -1)
+	if (retval == -1 || retval != i)
 		return (-1);
 	return (1);
 }
