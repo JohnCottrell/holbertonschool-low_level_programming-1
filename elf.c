@@ -16,5 +16,5 @@ int main (int argc, char *argv[])
     }
   Elf64_Ehdr header;
   read(file, &header, sizeof(Elf64_Ehdr));
-  printf("%s\n", header.e_ident);
+  printf("Magic: %x %x %x %x\n", header.e_ident[0], header.e_ident[1], header.e_ident[2], header.e_ident[3]);
 }
