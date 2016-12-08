@@ -32,6 +32,8 @@ ssize_t read_textfile(const char *filename, size_t letters)
 	if (retval != readval || retval == -1)
 		return (-1);
 	free(buff);
-	close(file);
+	readval = close(file);
+	if (readval == -1)
+		return (-1);
 	return (retval);
 }
