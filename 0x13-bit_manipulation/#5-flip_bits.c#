@@ -1,0 +1,25 @@
+#include "holberton.h"
+gcc -Wall -pedantic -Werror -Wextra 5-main.c 5-flip_bits.c -o f
+/**
+ * flip_bits - tells you how many bits you'd need to flip to make
+ * one number into another
+ *
+ * @n: number one
+ * @m: number two
+ * Return: Number of bits you'd need to flip
+ */
+unsigned int flip_bits(unsigned long int n, unsigned long int m)
+{
+	unsigned int or, i, retval, temp;
+
+	or = n ^ m;
+	i = 0;
+	while (or != 0)
+	{
+		temp = i & or;
+		if (temp != 0)
+			retval++;
+		or = or >> 1;
+	}
+	return (retval);
+}

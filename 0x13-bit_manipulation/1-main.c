@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include "holberton.h"
+#include <limits.h>
 
 /**
  * main - check the code for Holberton School students.
@@ -18,5 +19,6 @@ int main(void)
 	printf("\n");
 	print_binary((1 << 10) + 1);
 	printf("\n");
+	print_binary(ULONG_MAX);
 	return (0);
 }
