@@ -24,7 +24,7 @@ int create_file(const char *filename, char *text_content)
 			i++;
 		}
 	}
-	retval = write(file, text_content, i);
+	retval = write(file, text_content, i+1);
 	if (retval == -1)
 		return (-1);
 	return (1);
