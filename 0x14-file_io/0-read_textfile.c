@@ -17,7 +17,10 @@ ssize_t read_textfile(const char *filename, size_t letters)
 	int file, retval, readval;
 	char *buff;
 
+	file = retval = readval;
 	if (filename == NULL)
+		return (0);
+	if (letters == 0)
 		return (0);
 	buff = malloc(letters * sizeof(char));
 	if (buff == NULL)
@@ -38,7 +41,7 @@ ssize_t read_textfile(const char *filename, size_t letters)
 		return (0);
 	}
 	retval = write(1, buff, readval);
-	if (retval == -1 || readval != retval)
+	if (retval == -1)
 	{
 		free(buff);
 		return (0);
