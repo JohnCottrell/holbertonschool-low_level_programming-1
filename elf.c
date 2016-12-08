@@ -18,25 +18,26 @@ void printABIVersion(void *header);
 void printType(void *header);
 int main (int argc, char *argv[])
 {
-  int file;
-  file = open(argv[1], O_RDONLY);
-  if (file == -1)
-	  _perror("Cannot open file.\n", 98);
-  Elf64_Ehdr header;
-  read(file, &header, sizeof(Elf64_Ehdr));
-  if (header.e_ident[0] != ELFMAG0 || header.e_ident[1] != ELFMAG1 ||
-       header.e_ident[2] != ELFMAG2 || header.e_ident[3] != ELFMAG3)
-   {
-	   _perror("Error: Not an ELF file - it has the wrong magic bytes at the start\n", 98);
-  }
-  printf("ELF Header:\n");
-  printMagic(&header);
-  printClass(&header);
-  printData(&header);
-  printVersion(&header);
-  printOS(&header);
-  printABIVersion(&header);
-  printType(&header);
+	int file;
+	Elf64_Ehdr header;
+
+	file = open(argv[1], O_RDONLY);
+	if (file == -1)
+		_perror("Cannot open file.\n", 98);
+	read(file, &header, sizeof(Elf64_Ehdr));
+	if (header.e_ident[0] != ELFMAG0 || header.e_ident[1] != ELFMAG1 ||
+	    header.e_ident[2] != ELFMAG2 || header.e_ident[3] != ELFMAG3)
+	{
+		_perror("Error: Not an ELF file - it has the wrong magic bytes at the start\n", 98);
+	}
+	printf("ELF Header:\n");
+	printMagic(&header);
+	printClass(&header);
+	printData(&header);
+	printVersion(&header);
+	printOS(&header);
+	printABIVersion(&header);
+	printType(&header);
 }
 
 void printMagic(void *header)
@@ -125,49 +126,39 @@ void printOS(void *header)
 	switch (ehdr->e_ident[EI_OSABI])
 	{
 	case ELFOSABI_SYSV:       //UNIX System V ABI.
-		printf("UNIX - System V");
-		break;
+		printf("UNIX - System V"), break;
 	case ELFOSABI_HPUX:       //HP-UX ABI.
-		printf("UNIX - HP-UX");
-		break;
+		printf("UNIX - HP-UX"), break;
 	case ELFOSABI_NETBSD:     //NetBSD ABI.
-		printf("UNIX - NetBSD");
-		break;
+		printf("UNIX - NetBSD"), break;
 	case ELFOSABI_LINUX:      //Linux ABI.
 		break;
 	case ELFOSABI_SOLARIS:    //Solaris ABI.
-		printf("UNIX - Solaris");
-		break;
+		printf("UNIX - Solaris"), break;
 	case ELFOSABI_AIX:
-		printf("UNIX - AIX");
-		break;
+		printf("UNIX - AIX"), break;
 	case ELFOSABI_IRIX:       //IRIX ABI.
-		printf("UNIX - IRIX");
-		break;
+		printf("UNIX - IRIX"), break;
 	case ELFOSABI_FREEBSD:    //FreeBSD ABI.
-		printf("UNIX - FreeBSD");
-		break;
+		printf("UNIX - FreeBSD"), break;
 	case ELFOSABI_TRU64:      //TRU64 UNIX ABI.
-		printf("UNIX - TRU64");
-		break;
+		printf("UNIX - TRU64"), break;
 	case ELFOSABI_MODESTO:
-		printf("Novell - Modesto");
-		break;
+		printf("Novell - Modesto"), break;
 	case ELFOSABI_OPENBSD:
-		printf("UNIX - OpenBSD");
-		break;
+		printf("UNIX - OpenBSD"), break;
 	case ELFOSABI_OPENVMS:
-		printf("VMS - OpenVMS");
+		printf("VMS - OpenVMS"), break;
 	case ELFOSABI_NSK:
-		printf("HP - Non-Stop Kernel");
+		printf("HP - Non-Stop Kernel"), break;
 	case ELFOSABI_AROS:
-		printf("AROS");
+		printf("AROS"), break;
 	case ELFOSABI_STANDALONE:
-		printf("Standalone App");
+		printf("Standalone App"), break;
 	case ELFOSABI_ARM:
-		printf("ARM");
+		printf("ARM"), break;
 	case ELFOSABI_FENIXOS:
-		printf("FenixOS");
+		printf("FenixOS"), break;
 	default:
 		printf("<unknown: %d>", ehdr->e_ident[EI_OSABI]);
 	}
