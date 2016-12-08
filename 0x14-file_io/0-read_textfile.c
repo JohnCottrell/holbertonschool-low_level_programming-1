@@ -4,6 +4,14 @@
 #include <fcntl.h>
 #include <stdio.h>
 
+/**
+ * read_textfile - reads a textfile and prints it to stdout
+ *
+ * @filename: name of file to print
+ * @letters: letters to print
+ *
+ * Return: Null on failure
+ */
 ssize_t read_textfile(const char *filename, size_t letters)
 {
 	int file, retval;
