@@ -15,43 +15,29 @@
 ssize_t read_textfile(const char *filename, size_t letters)
 {
 	int file, retval, readval;
-	char *buff;
+	unsigned int i;
+	char buff;
 
-	file = retval = readval = 0;
+	file = retval = i = 0;
 	if (filename == NULL)
 		return (0);
-	if (letters == 0)
-		return (0);
-	buff = malloc(letters * sizeof(char));
-	if (buff == NULL)
-	{
-		free(buff);
-		return (0);
-	}
 	file = open(filename, O_RDWR);
-	if (filename == NULL || file == -1)
-	{
-		free(buff);
+	if (file == -1)
 		return (0);
-	}
-	readval = read(file, buff, letters);
+	readval = read(file, &buff, 1);
 	if (readval == -1)
-	{
-		free(buff);
 		return (0);
-	}
-	retval = write(1, buff, readval);
-	if (retval == -1)
+	for (i = 0;readval != 0 && i != letters; i++)
 	{
-		free(buff);
-		return (0);
+		retval = write(1, &buff, 1);
+		if (retval == -1)
+			return (0);
+		readval = read(file, &buff, 1);
+		if (readval == -1)
+			return (0);
 	}
-	free(buff);
 	readval = close(file);
 	if (readval == -1)
-	{
-		free(buff);
 		return (0);
-	}
-	return (retval);
+	return (i);
 }
