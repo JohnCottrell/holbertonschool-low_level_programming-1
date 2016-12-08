@@ -11,20 +11,23 @@
 int main(int argc, char *argv[])
 {
 	int file_from, file_to, readval, retval;
-	char buf[BUFSIZE];
+	char *buf;
 
+	buf = malloc(sizeof(char) * BUFSIZE);
 	retval = 1;
 	if (argc != 3)
 	{
 		dprintf(STDERR_FILENO, "Usage: cp file_from file_to\n");
+		free(buf);
 		exit(97);
 	}
 	file_from = open(argv[1], O_RDWR);
-	file_to = open(argv[2], O_RDWR | O_CREAT | O_EXCL, 0674);
+	file_to = creat(argv[2], 0664);
 	readval = read(file_from, buf, BUFSIZE);
 	if (readval == -1)
 	{
 		dprintf(STDERR_FILENO, "Error: Can't read from file %s\n", argv[1]);
+				free(buf);
 		exit(98);
 	}
 	while (readval != 0)
@@ -33,12 +36,14 @@ int main(int argc, char *argv[])
 		if (retval == -1 || retval != readval)
 		{
 			dprintf(STDERR_FILENO, "Error: Can't write to %s\n", argv[2]);
+					free(buf);
 			exit(99);
 		}
 		readval = read(file_from, buf, BUFSIZE);
 		if (readval == -1)
 		{
 			dprintf(STDERR_FILENO, "Error: Can't read from file %s\n", argv[1]);
+					free(buf);
 			exit(98);
 		}
 
@@ -47,12 +52,14 @@ int main(int argc, char *argv[])
 	if (retval == -1)
 	{
 		dprintf(STDERR_FILENO, "Error: Can't close fd %d\n", file_from);
+				free(buf);
 		exit(100);
 	}
 	retval = close(file_to);
 	if (retval == -1)
 	{
 		dprintf(STDERR_FILENO, "Error: Can't close fd %d\n", file_to);
+				free(buf);
 		exit(100);
 	}
 	return (1);
