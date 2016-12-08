@@ -1,6 +1,6 @@
 #include "holberton.h"
 #include <stdio.h>
-
+#define BUFSIZE 1024
 /**
  * main - copies a file
  *
@@ -10,8 +10,8 @@
  */
 int main(int argc, char *argv[])
 {
-	int file_from, file_to, retval;
-	char buf[1024];
+	int file_from, file_to, readval, retval;
+	char buf[BUFSIZE];
 
 	retval = 1;
 	if (argc != 3)
@@ -21,22 +21,22 @@ int main(int argc, char *argv[])
 	}
 	file_from = open(argv[1], O_RDWR);
 	file_to = open(argv[2], O_RDWR | O_CREAT | O_EXCL, 0674);
-	retval = read(file_from, buf, 1024);
-	if (retval == -1)
+	readval = read(file_from, buf, BUFSIZE);
+	if (readval == -1)
 	{
 		dprintf(STDERR_FILENO, "Error: Can't read from file %s\n", argv[1]);
 		exit(98);
 	}
-	while (retval != 0)
+	while (readval != 0)
 	{
-		retval = write(file_to, buf, retval);
-		if (retval == -1)
+		retval = write(file_to, buf, readval);
+		if (retval == -1 || retval != readval)
 		{
 			dprintf(STDERR_FILENO, "Error: Can't write to %s\n", argv[2]);
 			exit(99);
 		}
-		retval = read(file_from, buf, retval);
-		if (retval == -1)
+		readval = read(file_from, buf, BUFSIZE);
+		if (readval == -1)
 		{
 			dprintf(STDERR_FILENO, "Error: Can't read from file %s\n", argv[1]);
 			exit(98);
