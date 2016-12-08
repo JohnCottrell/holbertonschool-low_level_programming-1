@@ -15,16 +15,20 @@ int main(int argc, char *argv[])
 
 	retval = 1;
 	if (argc != 3)
-		dprintf(STDERR_FILENO, "Usage: cp file_from file_to\n"), exit(97);
+		dprintf(STDERR_FILENO, "Usage: cp file_from file_to\n"),
+			exit(97);
 	if (argv[0] == NULL)
-		dprintf(STDERR_FILENO, "Error: Can't read from file %s\n", argv[1]), exit(98);
+		dprintf(STDERR_FILENO, "Error: Can't read from file %s\n", argv[1]),
+			exit(98);
 	if (argv[1] == NULL)
-		dprintf(STDERR_FILENO, "Erro\r: Can't write to file %s\n", argv[2]), exit(99);
+		dprintf(STDERR_FILENO, "Erro\r: Can't write to file %s\n", argv[2]),
+			exit(99);
 	file_from = open(argv[1], O_RDONLY);
 	file_to = open(argv[2], O_WRONLY | O_CREAT | O_TRUNC, 0664);
 	readval = read(file_from, buf, BUFSIZE);
 	if (readval == -1)
-		dprintf(STDERR_FILENO, "Error: Can't read from file %s\n", argv[1]), exit(98);
+		dprintf(STDERR_FILENO, "Error: Can't read from file %s\n", argv[1]),
+			exit(98);
 	while (readval != 0)
 	{
 		retval = write(file_to, buf, readval);
@@ -32,7 +36,8 @@ int main(int argc, char *argv[])
 			dprintf(STDERR_FILENO, "Error: Can't write to %s\n", argv[2]), exit(99);
 		readval = read(file_from, buf, BUFSIZE);
 		if (readval == -1)
-			dprintf(STDERR_FILENO, "Error: Can't read from file %s\n", argv[1]), exit(98);
+			dprintf(STDERR_FILENO, "Error: Can't read from file %s\n", argv[1]),
+				exit(98);
 	}
 	retval = close(file_from);
 	if (retval == -1)
