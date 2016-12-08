@@ -27,9 +27,9 @@ ssize_t read_textfile(const char *filename, size_t letters)
 	readval = read(file, &buff, 1);
 	if (readval == -1)
 		return (0);
-	for (i = 0;readval != 0 && i != letters; i++)
+	for (i = 0; readval != 0 && i != letters; i++)
 	{
-		retval = write(1, &buff, 1);
+		retval = write(STDOUT_FILENO, &buff, 1);
 		if (retval == -1)
 			return (0);
 		readval = read(file, &buff, 1);
