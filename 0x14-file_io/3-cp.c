@@ -46,13 +46,13 @@ int main(int argc, char *argv[])
 	retval = close(file_from);
 	if (retval == -1)
 	{
-		dprintf(STDERR_FILENO, "Error: Can't close fd %d\n", retval);
+		dprintf(STDERR_FILENO, "Error: Can't close fd %d\n", file_from);
 		exit(100);
 	}
 	retval = close(file_to);
 	if (retval == -1)
 	{
-		dprintf(STDERR_FILENO, "Error: Can't close fd %d\n", retval);
+		dprintf(STDERR_FILENO, "Error: Can't close fd %d\n", file_to);
 		exit(100);
 	}
 	return (1);
