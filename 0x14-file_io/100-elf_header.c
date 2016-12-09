@@ -1,7 +1,7 @@
 #include <elf.h>
 #include "holberton.h"
 #include <stdio.h>
-#include <byteswap.h>
+
 
 /**
  * main - readelf clone! reads elf header info and prints it out.
@@ -58,6 +58,7 @@ int main(int argc, char *argv[])
  * getHeader - Mallocs out the appropriate header based on the class.
  *
  * @argv: arguments passed to main
+ * Return: Returns a pointer to the header.
  */
 void *getHeader(char *argv[])
 {
@@ -252,7 +253,7 @@ void printOS(void *header)
 }
 
 /**
- * printOS - prints ABI version
+ * printABIVersion - prints ABI version
  *
  * @header: pointer to an Elf_Ehdr
  */
