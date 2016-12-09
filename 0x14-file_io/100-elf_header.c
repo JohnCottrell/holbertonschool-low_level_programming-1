@@ -44,21 +44,13 @@ int main(int argc, char *argv[])
 	checkHeader(header);
 	printf("ELF Header:\n");
 	printMagic(header);
-	arch = printClass(header);
-	data = printData(header);
-	printVersion(header);
-	printOS(header);
+	arch = printClass(header); data = printData(header);
+	printVersion(header); printOS(header);
 	printABIVersion(header);
 	if (data == 1)
-	{
-		printType(header);
-		printEntry(header);
-	}
+		printType(header); printEntry(header);
 	else
-	{
-		bigType(header);
-		bigEntry(header, arch);
-	}
+		bigType(header); bigEntry(header, arch);
 	return (0);
 }
 
