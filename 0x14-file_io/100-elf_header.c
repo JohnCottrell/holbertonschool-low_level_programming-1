@@ -12,26 +12,35 @@
  */
 int main(int argc, char *argv[])
 {
-	int file, data, arch;
+	int file, data, arch, readval;
 	void *header;
+	Elf64_Ehdr sixtyfour;
+	Elf32_Ehdr thirtytwo;
 
+	data = 0;
 	if (argc != 2)
 	{
 		printf("usage: %s elf_filename\n", argv[0]);
 		exit(98);
 	}
 	if (argv[1] == NULL)
-	{
 		error("Null filename.", 98);
-	}
-	header = getHeader(argv);
+	arch = getHeader(argv);
 	file = open(argv[1], O_RDONLY);
 	if (file == -1)
-	{
-		free(header);
 		error("Cannot open file.\n", 98);
+	if (arch == 32)
+	{
+		header = &thirtytwo;
+		readval = read(file, header, sizeof(Elf32_Ehdr));
 	}
-	read(file, header, sizeof(Elf64_Ehdr));
+	else
+	{
+		header = &sixtyfour;
+		readval = read(file, header, sizeof(Elf64_Ehdr));
+	}
+	if (readval == -1)
+		error("Cannot read file.\n", 98);
 	checkHeader(header);
 	printf("ELF Header:\n");
 	printMagic(header);
@@ -50,7 +59,6 @@ int main(int argc, char *argv[])
 		bigType(header);
 		bigEntry(header, arch);
 	}
-	free(header);
 	return (0);
 }
 
@@ -60,25 +68,22 @@ int main(int argc, char *argv[])
  * @argv: arguments passed to main
  * Return: Returns a pointer to the header.
  */
-void *getHeader(char *argv[])
+int getHeader(char *argv[])
 {
 	int file;
 	char value;
-	Elf64_Ehdr *header;
-	Elf32_Ehdr *header32;
 
 	file = open(argv[1], O_RDONLY);
 	if (file == -1)
 		error("Cannot open file.\n", 98);
 	lseek(file, 5, SEEK_SET);
 	read(file, &value, 1);
+	close(file);
 	if (value == ELFCLASS32)
 	{
-		header32 = malloc(sizeof(Elf32_Ehdr));
-		return (header32);
+		return (32);
 	}
-	header = malloc(sizeof(Elf64_Ehdr));
-	return (header);
+	return (64);
 }
 
 /**
@@ -106,23 +111,15 @@ void checkHeader(void *header)
 void printMagic(void *header)
 {
 	Elf64_Ehdr *ehdr = header;
+	int i;
 
 	printf("  Magic:   ");
-	printf("%02x ", ehdr->e_ident[0]);
-	printf("%02x ", ehdr->e_ident[1]);
-	printf("%02x ", ehdr->e_ident[2]);
-	printf("%02x ", ehdr->e_ident[3]);
-	printf("%02x ", ehdr->e_ident[4]);
-	printf("%02x ", ehdr->e_ident[5]);
-	printf("%02x ", ehdr->e_ident[6]);
-	printf("%02x ", ehdr->e_ident[7]);
-	printf("%02x ", ehdr->e_ident[8]);
-	printf("%02x ", ehdr->e_ident[9]);
-	printf("%02x ", ehdr->e_ident[10]);
-	printf("%02x ", ehdr->e_ident[11]);
-	printf("%02x ", ehdr->e_ident[12]);
-	printf("%02x ", ehdr->e_ident[13]);
-	printf("%02x ", ehdr->e_ident[14]);
+	i = 0;
+	while (i != 15)
+	{
+		printf("%02x ", ehdr->e_ident[i]);
+		i++;
+	}
 	printf("%02x\n", ehdr->e_ident[15]);
 }
 
@@ -149,8 +146,10 @@ int printClass(void *header)
 	case ELFCLASSNONE:
 		printf("Invalid class\n");
 		return (64);
+	default:
+		printf("<unknown: %d>\n", ehdr->e_ident[EI_CLASS]);
+		return (64);
 	}
-	return (64);
 }
 
 /**
