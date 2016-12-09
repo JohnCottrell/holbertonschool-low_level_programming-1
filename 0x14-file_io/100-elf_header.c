@@ -250,7 +250,7 @@ void printOS(void *header)
 	case 16:
 		printf("FenixOS"); break;
 	default:
-		printf("<unknown: %d>", ehdr->e_ident[EI_OSABI]);
+		printf("<unknown: %x>", ehdr->e_ident[EI_OSABI]);
 	}
 	printf("\n");
 }
@@ -266,10 +266,7 @@ void printABIVersion(void *header)
 
 	printf("  ABI Version:");
 	printf("                       ");
-	if (ehdr->e_ident[EI_ABIVERSION] == 0)
-		printf("0");
-	else
-		printf("1");
+	printf("%d", ehdr->e_ident[EI_ABIVERSION]);
 	printf("\n");
 }
 
