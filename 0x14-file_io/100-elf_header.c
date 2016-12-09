@@ -62,19 +62,23 @@ int main(int argc, char *argv[])
  */
 int getHeader(char *argv[])
 {
-	int file;
+	int file, retval;
 	char value;
 
 	file = open(argv[1], O_RDONLY);
 	if (file == -1)
 		error("Cannot open file.\n", 98);
-	lseek(file, 5, SEEK_SET);
-	read(file, &value, 1);
-	close(file);
+	retval = lseek(file, 5, SEEK_SET);
+	if (retval == -1 || retval != 5)
+		error("Lseek error.\n", 98);
+	retval = read(file, &value, 1);
+	if (retval == -1)
+		error("Read error.\n", 98);
+	retval = close(file);
+	if (retval == -1)
+		error("Cannot close file.\n", 98);
 	if (value == ELFCLASS32)
-	{
 		return (32);
-	}
 	return (64);
 }
 
