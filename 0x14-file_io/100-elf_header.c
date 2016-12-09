@@ -299,7 +299,7 @@ void printType(void *header)
 		printf("CORE (Core file)");
 		break;
 	default:
-		printf("<unknown>: %d", ehdr->e_type);
+		printf("<unknown>: %x", ehdr->e_type);
 	}
 	printf("\n");
 }
@@ -349,7 +349,7 @@ void bigType(void *header)
 		printf("CORE (Core file)");
 		break;
 	default:
-		printf("<unknown>: %d", ehdr->e_type);
+		printf("<unknown>: %x", type);
 	}
 	printf("\n");
 }
