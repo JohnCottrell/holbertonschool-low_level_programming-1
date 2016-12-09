@@ -328,7 +328,7 @@ void bigType(void *header)
 	Elf64_Ehdr *ehdr = header;
 	uint16_t type;
 
-	type = (ehdr->e_type >> 8) | (ehdr->e_type << 8);
+	type = __bswap_16(ehdr->e_type);
 	printf("  Type:");
 	printf("                              ");
 	switch (type)
