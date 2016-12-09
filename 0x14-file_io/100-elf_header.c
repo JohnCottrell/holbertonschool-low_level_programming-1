@@ -1,11 +1,19 @@
 #include <elf.h>
 #include "holberton.h"
 #include <stdio.h>
+#include <byteswap.h>
 
+/**
+ * main - readelf clone! reads elf header info and prints it out.
+ *
+ * @argc: number of arguments
+ * @argv: arguments passed
+ * Return: Returns 1 on success, 98 on failure.
+ */
 int main(int argc, char *argv[])
 {
-	int file;
-	Elf64_Ehdr header;
+	int file, data, arch;
+	void *header;
 
 	if (argc != 2)
 	{
@@ -16,28 +24,84 @@ int main(int argc, char *argv[])
 	{
 		error("Null filename.", 98);
 	}
+	header = getHeader(argv);
 	file = open(argv[1], O_RDONLY);
 	if (file == -1)
-		error("Cannot open file.\n", 98);
-	read(file, &header, sizeof(Elf64_Ehdr));
-	if (header.e_ident[0] != ELFMAG0 || header.e_ident[1] != ELFMAG1 ||
-	    header.e_ident[2] != ELFMAG2 || header.e_ident[3] != ELFMAG3)
 	{
-		error("Error: Not an ELF file- it has the wrong magic bytes at the start\n",
-			98);
+		free(header);
+		error("Cannot open file.\n", 98);
 	}
+	read(file, header, sizeof(Elf64_Ehdr));
+	checkHeader(header);
 	printf("ELF Header:\n");
-	printMagic(&header);
-	printClass(&header);
-	printData(&header);
-	printVersion(&header);
-	printOS(&header);
-	printABIVersion(&header);
-	printType(&header);
-	printEntry(&header);
+	printMagic(header);
+	arch = printClass(header);
+	data = printData(header);
+	printVersion(header);
+	printOS(header);
+	printABIVersion(header);
+	if (data == 1)
+	{
+		printType(header);
+		printEntry(header);
+	}
+	else
+	{
+		bigType(header);
+		bigEntry(header, arch);
+	}
+	free(header);
 	return (0);
 }
 
+/**
+ * getHeader - Mallocs out the appropriate header based on the class.
+ *
+ * @argv: arguments passed to main
+ */
+void *getHeader(char *argv[])
+{
+	int file;
+	char value;
+	Elf64_Ehdr *header;
+	Elf32_Ehdr *header32;
+
+	file = open(argv[1], O_RDONLY);
+	if (file == -1)
+		error("Cannot open file.\n", 98);
+	lseek(file, 5, SEEK_SET);
+	read(file, &value, 1);
+	if (value == ELFCLASS32)
+	{
+		header32 = malloc(sizeof(Elf32_Ehdr));
+		return (header32);
+	}
+	header = malloc(sizeof(Elf64_Ehdr));
+	return (header);
+}
+
+/**
+ * checkHeader - ensures the magic bytes are valid
+ *
+ * @header: pointer to an Elf_Ehdr
+ */
+void checkHeader(void *header)
+{
+	Elf64_Ehdr *ehdr = header;
+
+	if (ehdr->e_ident[0] != ELFMAG0 || ehdr->e_ident[1] != ELFMAG1 ||
+	    ehdr->e_ident[2] != ELFMAG2 || ehdr->e_ident[3] != ELFMAG3)
+	{
+		error("Error: Not an ELF file- it has the wrong magic bytes at the start\n",
+		      98);
+	}
+}
+
+/**
+ * printMagic - prints the magic numbers!
+ *
+ * @header: pointer to an Elf_Ehdr
+ */
 void printMagic(void *header)
 {
 	Elf64_Ehdr *ehdr = header;
@@ -61,7 +125,13 @@ void printMagic(void *header)
 	printf("%02x\n", ehdr->e_ident[15]);
 }
 
-void printClass(void *header)
+/**
+ * printClass - prints class info
+ *
+ * @header: pointer to an Elf_Ehdr
+ * Return: returns 32 for 32 bit arch, 64 for 64
+ */
+int printClass(void *header)
 {
 	Elf64_Ehdr *ehdr = header;
 
@@ -70,19 +140,25 @@ void printClass(void *header)
 	switch (ehdr->e_ident[EI_CLASS])
 	{
 	case ELFCLASS32:
-		printf("ELF32");
-		break;
+		printf("ELF32\n");
+		return (32);
 	case ELFCLASS64:
-		printf("ELF64");
-		break;
+		printf("ELF64\n");
+		return (64);
 	case ELFCLASSNONE:
-		printf("Invalid class");
-		break;
+		printf("Invalid class\n");
+		return (64);
 	}
-	printf("\n");
+	return (64);
 }
 
-void printData(void *header)
+/**
+ * printData - prints data type info for elf header
+ *
+ * @header: pointer to an Elf_Ehdr
+ * Return: Returns 1 for little endian, 2 for big
+ */
+int printData(void *header)
 {
 	Elf64_Ehdr *ehdr = header;
 
@@ -91,17 +167,23 @@ void printData(void *header)
 	switch (ehdr->e_ident[EI_DATA])
 	{
 	case ELFDATANONE:
-		printf("Invalid ELF data");
-		break;
+		printf("Invalid ELF data\n");
+		return (1);
 	case ELFDATA2LSB:
-		printf("2's complement, little endian");
-		break;
+		printf("2's complement, little endian\n");
+		return (1);
 	case ELFDATA2MSB:
-		printf("2's complement, big endian");
-		break;
+		printf("2's complement, big endian\n");
+		return (2);
 	}
-	printf("\n");
+	return (1);
 }
+
+/**
+ * printVersion - prints version information
+ *
+ * @header: pointer to an Elf_Ehdr
+ */
 void printVersion(void *header)
 {
 	Elf64_Ehdr *ehdr = header;
@@ -120,6 +202,11 @@ void printVersion(void *header)
 	printf("\n");
 }
 
+/**
+ * printOS - prints OS information
+ *
+ * @header: pointer to an Elf_Ehdr
+ */
 void printOS(void *header)
 {
 	Elf64_Ehdr *ehdr = header;
@@ -164,6 +251,11 @@ void printOS(void *header)
 	printf("\n");
 }
 
+/**
+ * printOS - prints ABI version
+ *
+ * @header: pointer to an Elf_Ehdr
+ */
 void printABIVersion(void *header)
 {
 	Elf64_Ehdr *ehdr = header;
@@ -177,6 +269,11 @@ void printABIVersion(void *header)
 	printf("\n");
 }
 
+/**
+ * printType - prints type information
+ *
+ * @header: pointer to an Elf_Ehdr
+ */
 void printType(void *header)
 {
 	Elf64_Ehdr *ehdr = header;
@@ -206,6 +303,11 @@ void printType(void *header)
 	printf("\n");
 }
 
+/**
+ * printEntry - prints entry point address
+ *
+ * @header: pointer to an Elf_Ehdr
+ */
 void printEntry(void *header)
 {
 	Elf64_Ehdr *ehdr = header;
@@ -215,6 +317,91 @@ void printEntry(void *header)
 	printf("0x%x\n", (unsigned int) ehdr->e_entry);
 }
 
+/**
+ * bigType - prints type information, converts from big endian
+ *
+ * @header: pointer to an Elf_Ehdr
+ */
+void bigType(void *header)
+{
+	Elf64_Ehdr *ehdr = header;
+	uint16_t type;
+
+	type = (ehdr->e_type >> 8) | (ehdr->e_type << 8);
+	printf("  Type:");
+	printf("                              ");
+	switch (type)
+	{
+	case ET_NONE:
+		printf("NONE (None)");
+		break;
+	case ET_REL:
+		printf("REL (Relocatable file)");
+		break;
+	case ET_EXEC:
+		printf("EXEC (Executable file)");
+		break;
+	case ET_DYN:
+		printf("DYN (Shared object file)");
+		break;
+	case ET_CORE:
+		printf("CORE (Core file)");
+		break;
+	default:
+		printf("<unknown>: %d", ehdr->e_type);
+	}
+	printf("\n");
+}
+
+/**
+ * bigEntry - prints entry point information after converting from big endian
+ *
+ * @header: pointer to an Elf_Ehdr
+ * @arch: 64 or 32 bit
+ */
+void bigEntry(void *header, int arch)
+{
+	Elf64_Ehdr *ehdr;
+	Elf32_Ehdr *ehdr32;
+	Elf64_Addr entry;
+	Elf32_Addr entry32;
+
+	if (arch == 64)
+	{
+		ehdr = header;
+		entry = ehdr->e_entry;
+		entry = ((entry & 0x00000000000000FF) << 56) |
+			((entry & 0x000000000000FF00) << 40) |
+			((entry & 0x0000000000FF0000) << 24) |
+			((entry & 0x00000000FF000000) <<  8) |
+			((entry & 0x000000FF00000000) >>  8) |
+			((entry & 0x0000FF0000000000) >> 24) |
+			((entry & 0x00FF000000000000) >> 40) |
+			((entry & 0xFF00000000000000) >> 56);
+		printf("  Entry point address:");
+		printf("               ");
+		printf("0x%lx\n", entry);
+	}
+	else
+	{
+		ehdr32 = header;
+		entry32 = (ehdr32->e_entry << 8 & 0xFF00FF00) |
+			(ehdr32->e_entry >> 8 & 0xFF00FF);
+		entry32 = (entry32 << 16) | (entry32 >> 16);
+		printf("  Entry point address:");
+		printf("               ");
+		printf("0x%x\n", entry32);
+	}
+
+}
+
+
+/**
+ * error - writes an error to stderr, exits with given errorcode
+ *
+ * @exitcode: code to exit with
+ * @errmsg: errmsg to print to stderr
+ */
 void error(char *errmsg, int exitcode)
 {
 	write(STDERR_FILENO, errmsg, _strlen(errmsg));
