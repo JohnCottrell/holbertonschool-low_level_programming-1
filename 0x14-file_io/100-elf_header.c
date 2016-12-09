@@ -48,9 +48,13 @@ int main(int argc, char *argv[])
 	printVersion(header); printOS(header);
 	printABIVersion(header);
 	if (data == 1)
+	{
 		printType(header); printEntry(header);
+	}
 	else
+	{
 		bigType(header); bigEntry(header, arch);
+	}
 	return (0);
 }
 
