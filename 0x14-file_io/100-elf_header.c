@@ -12,38 +12,33 @@
  */
 int main(int argc, char *argv[])
 {
-	int file, data, arch, readval;
+	int file, data, arch, readval, check;
 	void *header;
-	Elf64_Ehdr sixtyfour;
-	Elf32_Ehdr thirtytwo;
+	Elf64_Ehdr sixtyfour; Elf32_Ehdr thirtytwo;
 
 	data = 0;
 	if (argc != 2)
 	{
-		printf("usage: %s elf_filename\n", argv[0]);
-		exit(98);
+		printf("usage: %s elf_filename\n", argv[0]); exit(98);
 	}
 	if (argv[1] == NULL)
 		error("Null filename.", 98);
-	arch = getHeader(argv);
-	file = open(argv[1], O_RDONLY);
+	arch = getHeader(argv);	file = open(argv[1], O_RDONLY);
 	if (file == -1)
 		error("Cannot open file.\n", 98);
 	if (arch == 32)
 	{
-		header = &thirtytwo;
-		readval = read(file, header, sizeof(Elf32_Ehdr));
+		header = &thirtytwo; check = sizeof(Elf32_Ehdr);
+		readval = read(file, header, check);
 	}
 	else
 	{
-		header = &sixtyfour;
-		readval = read(file, header, sizeof(Elf64_Ehdr));
+		header = &sixtyfour; check = sizeof(Elf64_Ehdr);
+		readval = read(file, header, check);
 	}
-	if (readval == -1)
+	if (readval == -1 || readval != check)
 		error("Cannot read file.\n", 98);
-	checkHeader(header);
-	printf("ELF Header:\n");
-	printMagic(header);
+	checkHeader(header); printMagic(header);
 	arch = printClass(header); data = printData(header);
 	printVersion(header); printOS(header);
 	printABIVersion(header);
@@ -108,6 +103,7 @@ void printMagic(void *header)
 {
 	Elf64_Ehdr *ehdr = header;
 
+	printf("ELF Header:\n");
 	printf("  Magic:   ");
 	printf("%02x ", ehdr->e_ident[0]);
 	printf("%02x ", ehdr->e_ident[1]);
@@ -151,7 +147,7 @@ int printClass(void *header)
 		printf("Invalid class\n");
 		return (64);
 	default:
-		printf("<unknown: %d>\n", ehdr->e_ident[EI_CLASS]);
+		printf("<unknown: %x>\n", ehdr->e_ident[EI_CLASS]);
 		return (64);
 	}
 }
@@ -179,8 +175,10 @@ int printData(void *header)
 	case ELFDATA2MSB:
 		printf("2's complement, big endian\n");
 		return (2);
+	default:
+		printf("<unknown: %x>\n", ehdr->e_ident[EI_DATA]);
+		return (1);
 	}
-	return (1);
 }
 
 /**
@@ -202,6 +200,8 @@ void printVersion(void *header)
 	case EV_CURRENT:
 		printf("1 (current)");
 		break;
+	default:
+		printf("<unknown: %d>", ehdr->e_ident[EI_VERSION]);
 	}
 	printf("\n");
 }
