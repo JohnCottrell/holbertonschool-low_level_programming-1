@@ -12,11 +12,10 @@
  */
 int main(int argc, char *argv[])
 {
-	int file, data, arch, readval, check;
+	int file, data, arch, readval, check, retval;
 	void *header;
 	Elf64_Ehdr sixtyfour; Elf32_Ehdr thirtytwo;
 
-	data = 0;
 	if (argc != 2)
 	{
 		printf("usage: %s elf_filename\n", argv[0]); exit(98);
@@ -37,11 +36,10 @@ int main(int argc, char *argv[])
 		readval = read(file, header, check);
 	}
 	if (readval == -1 || readval != check)
-		error("Cannot read file.\n", 98);
+		error("Cannot read from file.\n", 98);
 	checkHeader(header); printMagic(header);
 	arch = printClass(header); data = printData(header);
-	printVersion(header); printOS(header);
-	printABIVersion(header);
+	printVersion(header); printOS(header); printABIVersion(header);
 	if (data == 1)
 	{
 		printType(header); printEntry(header);
@@ -50,6 +48,9 @@ int main(int argc, char *argv[])
 	{
 		bigType(header); bigEntry(header, arch);
 	}
+	retval = close(file);
+	if (retval == -1)
+		error("Cannot close file.\n", 98);
 	return (0);
 }
 
