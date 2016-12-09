@@ -103,15 +103,23 @@ void checkHeader(void *header)
 void printMagic(void *header)
 {
 	Elf64_Ehdr *ehdr = header;
-	int i;
 
 	printf("  Magic:   ");
-	i = 0;
-	while (i != 15)
-	{
-		printf("%02x ", ehdr->e_ident[i]);
-		i++;
-	}
+	printf("%02x ", ehdr->e_ident[0]);
+	printf("%02x ", ehdr->e_ident[1]);
+	printf("%02x ", ehdr->e_ident[2]);
+	printf("%02x ", ehdr->e_ident[3]);
+	printf("%02x ", ehdr->e_ident[4]);
+	printf("%02x ", ehdr->e_ident[5]);
+	printf("%02x ", ehdr->e_ident[6]);
+	printf("%02x ", ehdr->e_ident[7]);
+	printf("%02x ", ehdr->e_ident[8]);
+	printf("%02x ", ehdr->e_ident[9]);
+	printf("%02x ", ehdr->e_ident[10]);
+	printf("%02x ", ehdr->e_ident[11]);
+	printf("%02x ", ehdr->e_ident[12]);
+	printf("%02x ", ehdr->e_ident[13]);
+	printf("%02x ", ehdr->e_ident[14]);
 	printf("%02x\n", ehdr->e_ident[15]);
 }
 
