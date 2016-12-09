@@ -16,7 +16,7 @@ void printOS(void *header);
 void printABIVersion(void *header);
 void printType(void *header);
 void printEntry(void *header);
-void *getHeader(char *argv[]);
+int getHeader(char *argv[]);
 void checkHeader(void *header);
 void bigType(void *header);
 void bigEntry(void *header, int arch);
