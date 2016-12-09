@@ -1,7 +1,7 @@
 #include <elf.h>
 #include "holberton.h"
 #include <stdio.h>
-
+#include <byteswap.h>
 
 /**
  * main - readelf clone! reads elf header info and prints it out.
@@ -370,15 +370,7 @@ void bigEntry(void *header, int arch)
 	if (arch == 64)
 	{
 		ehdr = header;
-		entry = ehdr->e_entry;
-		entry = ((entry & 0x00000000000000FF) << 56) |
-			((entry & 0x000000000000FF00) << 40) |
-			((entry & 0x0000000000FF0000) << 24) |
-			((entry & 0x00000000FF000000) <<  8) |
-			((entry & 0x000000FF00000000) >>  8) |
-			((entry & 0x0000FF0000000000) >> 24) |
-			((entry & 0x00FF000000000000) >> 40) |
-			((entry & 0xFF00000000000000) >> 56);
+		entry = __bswap_64(ehdr->e_entry);
 		printf("  Entry point address:");
 		printf("               ");
 		printf("0x%lx\n", entry);
@@ -386,9 +378,7 @@ void bigEntry(void *header, int arch)
 	else
 	{
 		ehdr32 = header;
-		entry32 = (ehdr32->e_entry << 8 & 0xFF00FF00) |
-			(ehdr32->e_entry >> 8 & 0xFF00FF);
-		entry32 = (entry32 << 16) | (entry32 >> 16);
+		entry32 = __bswap_32(ehdr32->e_entry);
 		printf("  Entry point address:");
 		printf("               ");
 		printf("0x%x\n", entry32);
