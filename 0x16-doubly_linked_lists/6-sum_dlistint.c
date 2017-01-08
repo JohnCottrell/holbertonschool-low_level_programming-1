@@ -1,5 +1,11 @@
 #include "lists.h"
 
+/**
+ * sum_dlistint - returns the sum of all dlistint nodes
+ *
+ * @head: head of dlist
+ * Return: Returns number of nodes in dlist
+ */
 int sum_dlistint(dlistint_t *head)
 {
 	int i;
