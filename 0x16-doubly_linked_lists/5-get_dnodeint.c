@@ -21,6 +21,8 @@ dlistint_t *get_dnodeint_at_index(dlistint_t *head, unsigned int index)
 	{
 		walk = walk->next;
 		i++;
+		if (walk == NULL)
+			return (NULL);
 	}
 	return (walk);
 }
