@@ -8,15 +8,15 @@
  *
  * Return: Returns address to the new dnodeint, or NULL on failure
  */
-dlistint_t *insert_dnodeint_at_idx(dlistint_t **head, unsigned int idx, int n)
+dlistint_t *insert_dnodeint_at_index(dlistint_t **h, unsigned int idx, int n)
 {
 	dlistint_t *walk, *newnode, *temp;
-	int i;
+	unsigned int i;
 
-	if (head == NULL && n != 0)
+	if (h == NULL && n != 0)
 		return (NULL);
-	if (head != NULL)
-		walk = *head;
+	if (h != NULL)
+		walk = *h;
 	newnode = malloc(sizeof(dlistint_t));
 	if (newnode == NULL)
 		return (NULL);
@@ -27,8 +27,8 @@ dlistint_t *insert_dnodeint_at_idx(dlistint_t **head, unsigned int idx, int n)
 		newnode->next = walk;
 		walk->prev = newnode;
 		newnode->prev = NULL;
-		*head = newnode;
-		return (*head);
+		*h = newnode;
+		return (*h);
 	}
 	while (i < (idx - 1))
 	{
