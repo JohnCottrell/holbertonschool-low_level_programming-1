@@ -1,5 +1,3 @@
-#define _GNU_SOURCE
-
 int rand(void)
 {
 	static int i = 0;
@@ -20,6 +18,6 @@ int rand(void)
 	case 6:
 		return (74);
 	default:
-		return (0);
+		return (i);
 	}
 }
