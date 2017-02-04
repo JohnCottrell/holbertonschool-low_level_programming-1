@@ -1,4 +1,5 @@
 #include "hash_tables.h"
+#include <string.h>
 
 /**
  * hash_table_get - returns a value associated with a key in a ht
@@ -10,11 +11,13 @@
 char *hash_table_get(const hash_table_t *ht, const char *key)
 {
 	unsigned long int hsh;
+	hash_node_t *node;
 
 	hsh = key_index((unsigned char *) key, ht->size);
 	if (ht->array[hsh])
 	{
-		while (strmcp(node->key, key) != 0 && node->key != NULL)
+		node = ht->array[hsh];
+		while (strcmp(node->key, key) != 0 && node->key != NULL)
 		{
 			node = node->next;
 		}
