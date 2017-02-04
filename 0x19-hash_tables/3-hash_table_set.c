@@ -12,24 +12,40 @@
 int hash_table_set(hash_table_t *ht, const char *key, const char *value)
 {
 	unsigned long int hsh;
-	hash_node_t *node;
+	hash_node_t *node, *walk;
 
 	if (!ht || !key || !value || strlen(key) == 0)
 		return (0);
+	hsh = key_index((unsigned char *)key, ht->size);
+	if (ht->array[hsh])
+	{
+		walk = ht->array[hsh];
+		while (walk && strcmp(walk->key, key) != 0)
+			walk = walk->next;
+		if (strcmp(walk->key, key) == 0)
+		{
+			free(walk->value);
+			walk->value = strdup(value);
+			return (1);
+		}
+	}
 	node = malloc(sizeof(hash_node_t));
 	if (node == NULL)
 		return (0);
-	hsh = key_index((unsigned char *)key, ht->size);
 	node->key = strdup(key);
 	if (node->key == NULL)
+	{
+		free(node);
 		return (0);
+	}
 	node->value = strdup(value);
 	if (node->value == NULL)
+	{
+		free(node->key);
+		free(node);
 		return (0);
-	if (ht->array[hsh] == NULL)
-		node->next = NULL;
-	else
-		node->next = ht->array[hsh];
+	}
+	node->next = ht->array[hsh];
 	ht->array[hsh] = node;
 	return (1);
 }
