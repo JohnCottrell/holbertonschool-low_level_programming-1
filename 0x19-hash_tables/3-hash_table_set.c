@@ -22,7 +22,7 @@ int hash_table_set(hash_table_t *ht, const char *key, const char *value)
 		walk = ht->array[hsh];
 		while (walk && strcmp(walk->key, key) != 0)
 			walk = walk->next;
-		if (strcmp(walk->key, key) == 0)
+		if (walk && strcmp(walk->key, key) == 0)
 		{
 			free(walk->value);
 			walk->value = strdup(value);
