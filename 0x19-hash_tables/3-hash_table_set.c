@@ -1,6 +1,14 @@
 #include "hash_tables.h"
 #include <string.h>
 
+/**
+ * hash_table_set - sets a value to a key in a hash_table_t
+ *
+ * @ht: hash_table_t
+ * @key: key for bucket
+ * @value: value for bucket
+ * Return: Returns 1 on success, 0 otherwise
+ */
 int hash_table_set(hash_table_t *ht, const char *key, const char *value)
 {
 	unsigned long int hsh;
@@ -8,17 +16,17 @@ int hash_table_set(hash_table_t *ht, const char *key, const char *value)
 
 	node = malloc(sizeof(hash_node_t));
 	if (node == NULL)
-		return (-1);
+		return (0);
 	node->next = NULL;
 	hsh = key_index(key, ht->size);
+	node->key = strdup(key);
+	node->value = strdup(value);
 	if (ht->array[hsh] == NULL)
-	{
-		node->key = strdup(key);
-		node->value = strdup(value);
-		ht->array[hsh] = node;
-		return (1);
-	}
-	return (0);
+		node->next = NULL;
+	else
+		node->next = ht->array[hsh];
+	ht->array[hsh] = node;
+	return (1);
 }
 
 /**
