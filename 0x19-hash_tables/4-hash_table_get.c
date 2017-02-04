@@ -19,11 +19,11 @@ char *hash_table_get(const hash_table_t *ht, const char *key)
 	if (ht->array[hsh])
 	{
 		node = ht->array[hsh];
-		while (strcmp(node->key, key) != 0 && node->key != NULL)
+		while (strncmp(node->key, key, strlen(key)) != 0 && node)
 		{
 			node = node->next;
 		}
-		if (strcmp(node->key, key) == 0)
+		if (node && strncmp(node->key, key, strlen(key)) == 0)
 			return ((ht->array[hsh])->value);
 	}
 	return (NULL);
