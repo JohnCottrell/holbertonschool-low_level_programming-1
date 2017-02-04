@@ -13,13 +13,10 @@ int main(void)
 	hash_table_t *ht;
 
 	ht = hash_table_create(1024);
-	hash_table_set(ht, "c", "fun");
-	hash_table_set(ht, "python", "awesome");
-	hash_table_set(ht, "Jennie", "and Jay love asm");
-	hash_table_set(ht, "N", "queens");
-	hash_table_set(ht, "Asterix", "Obelix");
-	hash_table_set(ht, "Betty", "Holberton");
-	hash_table_set(ht, "98", "Battery Street");
+	char *my_key = strdup("plop");
+	char *my_data = strdup("I'm not really French per say");
+	hash_table_set(ht, my_key, my_data);
+	free(my_key);
+	free(my_data);
 	hash_table_print(ht);
-	return (EXIT_SUCCESS);
 }
