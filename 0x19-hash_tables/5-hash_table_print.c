@@ -12,6 +12,11 @@ void hash_table_print(const hash_table_t *ht)
 
 	flag = 0;
 	printf("{");
+	if (ht->array == NULL)
+	{
+		printf("{");
+		return;
+	}
 	for (i = 0; i < ht->size; i++)
 		while (ht->array[i] != NULL)
 		{
