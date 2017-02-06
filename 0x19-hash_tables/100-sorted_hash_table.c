@@ -32,7 +32,8 @@ shash_table_t *shash_table_create(unsigned long int size)
  */
 int table_size(shash_table_t *ht)
 {
-	int i, total;
+	unsigned int i;
+	int total;
 
 	for (i = 0, total = 0; i < ht->size; i++)
 		if (ht->array[i] != NULL)
@@ -199,7 +200,6 @@ char *shash_table_get(const shash_table_t *ht, const char *key)
  */
 void shash_table_print(const shash_table_t *ht)
 {
-	unsigned long int i;
 	unsigned int flag;
 	shash_node_t *walk;
 
@@ -225,46 +225,12 @@ void shash_table_print(const shash_table_t *ht)
 }
 
 /**
- * key_index - returns the index of a specific key
- *
- * @key: key to search for
- * @size: size of hash_table_t
- * Return: returns the hashed index
- */
-unsigned long int key_index(const unsigned char *key, unsigned long int size)
-{
-	return (hash_djb2((unsigned char *)key) % size);
-}
-
-/**
- * hash_djb2 - djb2 hash function
- * found at: http://www.cse.yorku.ca/~oz/hash.html
- *
- * @str: string to hash
- * Return: returns hashed string
- */
-unsigned long int hash_djb2(const unsigned char *str)
-{
-	unsigned long int hash;
-	int c;
-
-	hash = 5381;
-	while ((c = *str++))
-	{
-		hash = ((hash << 5) + hash) + c; /* hash * 33 + c */
-	}
-	return (hash);
-}
-
-
-/**
  * shash_table_print_rev - prints a shash_table_t out in reverse
  *
  * @ht: shash_table_t to print
  */
 void shash_table_print_rev(const shash_table_t *ht)
 {
-	unsigned long int i;
 	unsigned int flag;
 	shash_node_t *walk;
 
