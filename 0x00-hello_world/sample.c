@@ -1,5 +1,5 @@
 /**
- * main - description
+ * main
  * Return: stuff
  */
 int main(void)
