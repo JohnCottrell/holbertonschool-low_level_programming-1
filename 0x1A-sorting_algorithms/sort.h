@@ -32,5 +32,7 @@ void merge_sort(int *array, size_t size);
 void heap_sort(int *array, size_t size);
 void radix_sort(int *array, size_t size);
 void bitonic_sort(int *array, size_t size);
-//void sort_deck(deck_node_t **deck);
+void qs(int *array, size_t size, int start, int end);
+int partition(int *array, size_t size, int pivot, int end);
+void swap(int *array, size_t size, int i, int j);
 #endif
