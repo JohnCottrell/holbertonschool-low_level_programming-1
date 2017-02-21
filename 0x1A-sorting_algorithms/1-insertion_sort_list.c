@@ -9,6 +9,8 @@ void insertion_sort_list(listint_t **list)
 	listint_t *walk;
 	unsigned int i;
 
+	if (list_length(list) < 2)
+		return;
 	for (i = 1; walk; i++)
 	{
 		walk = from_index(list, i);
