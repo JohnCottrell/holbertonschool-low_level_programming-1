@@ -11,7 +11,6 @@ void insertion_sort_list(listint_t **list)
 
 	if (!list || !(*list))
 		return;
-	length = listint_len(*list);
 	if (list_length(list) <= 1)
 		return;
 	for (i = 1; walk; i++)
