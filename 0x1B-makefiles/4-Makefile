@@ -1,0 +1,39 @@
+SRC=$(wildcard *.c)
+CC=gcc
+CFLAGS=-Wall -Werror -Wextra -pedantic
+OBJ=$(SRC:%.c=%.o)
+NAME=holberton
+RM=-rm
+
+%.o: %.c
+	$(CC) $(CFLAGS) -c $< -o $@
+
+all: $(OBJ)
+	$(CC) $(CFLAGS) $(OBJ) -o $(NAME)
+
+clean:
+ifneq ($(strip $(wildcard *~)),)
+	$(RM) $(wildcard *~)
+endif
+ifneq ($(strip $(wildcard $(NAME))),)
+	$(RM) $(NAME)
+endif
+
+fclean:
+ifneq ($(strip $(wildcard *~)),)
+	$(RM) $(wildcard *~)
+endif
+ifneq ($(strip $(wildcard $(NAME))),)
+	$(RM) $(NAME)
+endif
+ifneq ($(strip $(wildcard *.o)),)
+	$(RM) $(wildcard *.o)
+endif
+
+
+oclean:
+ifneq ($(strip $(wildcard *.o)),)
+	$(RM) $(wildcard *.o)
+endif
+
+re: oclean all
