@@ -9,7 +9,10 @@ void insertion_sort_list(listint_t **list)
 	listint_t *walk;
 	unsigned int i;
 
-	if (list_length(list) < 2)
+	if (!list || !(*list))
+		return;
+	length = listint_len(*list);
+	if (list_length(list) <= 1)
 		return;
 	for (i = 1; walk; i++)
 	{
