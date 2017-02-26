@@ -1,7 +1,7 @@
-SRC  := $(wildcard *.c)
-CC = gcc
-OBJ := $(SRC:%.c=%.o)
-NAME = holberton
+SRC=$(wildcard *.c)
+CC=gcc
+OBJ=$(SRC:%.c=%.o)
+NAME=holberton
 
 %.o: %.c
 	$(CC) -c $< -o $@
