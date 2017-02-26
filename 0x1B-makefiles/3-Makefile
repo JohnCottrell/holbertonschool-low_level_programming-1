@@ -1,0 +1,38 @@
+SRC=$(wildcard *.c)
+CC=gcc
+OBJ=$(SRC:%.c=%.o)
+NAME=holberton
+RM=-rm
+
+%.o: %.c
+	$(CC) -c $< -o $@
+
+all: $(OBJ)
+	$(CC) $(OBJ) -o $(NAME)
+
+clean:
+ifneq ($(strip $(wildcard *~)),)
+	$(RM) $(wildcard *~)
+endif
+ifneq ($(strip $(wildcard $(NAME))),)
+	$(RM) $(NAME)
+endif
+
+fclean:
+ifneq ($(strip $(wildcard *~)),)
+	$(RM) $(wildcard *~)
+endif
+ifneq ($(strip $(wildcard $(NAME))),)
+	$(RM) $(NAME)
+endif
+ifneq ($(strip $(wildcard *.o)),)
+	$(RM) $(wildcard *.o)
+endif
+
+
+oclean:
+ifneq ($(strip $(wildcard *.o)),)
+	$(RM) $(wildcard *.o)
+endif
+
+re: oclean all
