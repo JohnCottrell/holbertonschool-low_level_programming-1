@@ -1,16 +1,17 @@
 #include "sort.h"
 
-
-unsigned int rev_list(listint_t **list);
-listint_t *from_index(listint_t **list, unsigned int index);
-unsigned int list_swap(listint_t **list, unsigned int index);
-
+/**
+ * insertion_sort_list - insertion sorts a list
+ * @list: head of list
+ */
 void insertion_sort_list(listint_t **list)
 {
 	listint_t *walk;
 	unsigned int i;
 
-	for (i = 1;walk;i++)
+	if (list_length(list) < 2)
+		return;
+	for (i = 1; walk; i++)
 	{
 		walk = from_index(list, i);
 		if (walk && walk->n < (walk->prev)->n)
@@ -22,6 +23,12 @@ void insertion_sort_list(listint_t **list)
 	}
 }
 
+/**
+ * from_index - grabs a node at a specific index
+ * @list: list to grab from
+ * @index: index to grab at
+ * Return: returns a pointer to the node specified
+ */
 listint_t *from_index(listint_t **list, unsigned int index)
 {
 	listint_t *walk;
@@ -35,6 +42,12 @@ listint_t *from_index(listint_t **list, unsigned int index)
 	return (walk);
 }
 
+/**
+ * list_swap - swaps a node with the previous node
+ * @list: list to work from
+ * @index: index to swap at
+ * Return: returns 1 on success
+ */
 unsigned int list_swap(listint_t **list, unsigned int index)
 {
 	listint_t *at_index, *walk;
@@ -57,10 +70,16 @@ unsigned int list_swap(listint_t **list, unsigned int index)
 	return (1);
 }
 
+/**
+ * list_length - returns length of a linked list
+ * @list: head of list
+ * Return: Returns length of linked list
+ */
 unsigned int list_length(listint_t **list)
 {
 	listint_t *walk;
 	unsigned int i;
+
 	walk = *list;
 
 	i = 0;
@@ -72,6 +91,11 @@ unsigned int list_length(listint_t **list)
 	return (i);
 }
 
+/**
+ * rev_list - prints a list backwards, for testing
+ * @list: head of list
+ * Return: 1 on success
+ */
 unsigned int rev_list(listint_t **list)
 {
 	listint_t *walk;

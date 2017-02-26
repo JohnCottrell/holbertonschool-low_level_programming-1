@@ -2,11 +2,16 @@
 #include <stdlib.h>
 #include "sort.h"
 
+/**
+ * selection_sort - sorts an array by selection sort
+ * @array: array to sort
+ * @size: size of array
+ */
 void selection_sort(int *array, size_t size)
 {
-	int i, temp, j, swap;
+	unsigned int i, temp, j, swap;
 
-	for (i = 0;i < (size - 1);i++)
+	for (i = 0; i < (size - 1); i++)
 	{
 		swap = i;
 		for (j = (i + 1); j < size; j++)

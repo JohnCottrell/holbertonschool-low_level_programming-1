@@ -17,7 +17,7 @@ typedef struct listint_s
 	struct listint_s *next;
 } listint_t;
 
-unsigned int list_length(listint_t **list);
+
 listint_t *create_listint(const int *array, size_t size);
 void print_array(const int *array, size_t size);
 void print_list(const listint_t *list);
@@ -32,5 +32,14 @@ void merge_sort(int *array, size_t size);
 void heap_sort(int *array, size_t size);
 void radix_sort(int *array, size_t size);
 void bitonic_sort(int *array, size_t size);
-//void sort_deck(deck_node_t **deck);
+
+listint_t *from_index(listint_t **list, unsigned int index);
+unsigned int list_swap(listint_t **list, unsigned int index);
+unsigned int rev_list(listint_t **list);
+unsigned int list_length(listint_t **list);
+
+/* Quicksort Stuff */
+void qs(int *array, size_t size, int start, int end);
+int partition(int *array, size_t size, int pivot, int end);
+void swap(int *array, size_t size, int i, int j);
 #endif
