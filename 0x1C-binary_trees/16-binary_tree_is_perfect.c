@@ -1,19 +1,6 @@
+#include "4-binary_tree_is_leaf.c"
+#include "14-binary_tree_balance.c"
 #include "binary_trees.h"
-
-/**
- * binary_tree_is_leaf - checks to see if a binary tree node is a leaf
- *
- * @node: pointer to the node being checked
- * Return: Returns 1 if node is a leaf, 0 if not, or if NULL
- */
-int binary_tree_is_leaf(const binary_tree_t *node)
-{
-	if (!node)
-		return (0);
-	if (node->right || node->left)
-		return (0);
-	return (1);
-}
 
 /**
  * binary_tree_is_full - tells if a binary tree is full or not
@@ -45,4 +32,20 @@ int full_up(const binary_tree_t *tree)
 		if (tree->right || tree->left)
 			return (1);
 	return (full_up(tree->left) + full_up(tree->right));
+}
+
+/**
+ * binary_tree_is_perfect - checks to see if a binary tree is perfect
+ * a perfect binary tree has a neutral balance and is full
+ *
+ * @tree: tree to check from
+ * Return: returns 1 if perfect, 0 otherwise
+ */
+int binary_tree_is_perfect(const binary_tree_t *tree)
+{
+	if (!tree)
+		return (0);
+	if (binary_tree_is_full(tree) && binary_tree_balance(tree) == 0)
+		return (1);
+	return (0);
 }

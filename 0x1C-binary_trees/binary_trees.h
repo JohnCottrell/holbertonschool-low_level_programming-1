@@ -1,3 +1,5 @@
+#ifndef BIN_TREE_H
+#define BIN_TREE_H
 #include <stdlib.h>
 
 typedef struct binary_tree_s heap_t;
@@ -38,3 +40,7 @@ size_t binary_tree_nodes(const binary_tree_t *tree);
 int binary_tree_balance(const binary_tree_t *tree);
 int binary_tree_is_full(const binary_tree_t *tree);
 int full_up(const binary_tree_t *tree);
+size_t count_nodes(const binary_tree_t *tree, size_t nodes);
+int binary_tree_is_perfect(const binary_tree_t *tree);
+binary_tree_t *binary_tree_sibling(binary_tree_t *node);
+#endif
