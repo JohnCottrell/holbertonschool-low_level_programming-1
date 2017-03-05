@@ -1,8 +1,0 @@
-/**
- * main - description
- * return: stuff
- */
-int main(void)
-{
-	int i;
-}
