@@ -1,6 +1,40 @@
+#include "search_algos.h"
+#include <stdio.h>
+#include <math.h>
+
 /**
- * name - description
+ * jump_search - uses jump search to find a given number in a sorted array
  *
- * @parameter:
- * Return:
+ * @array: array to search in
+ * @size: size of array
+ * @value: value being searched for
+ *
+ * Return: returns the first index of the value, or -1
  */
+int jump_search(int *array, size_t size, int value)
+{
+	size_t step, i;
+
+	step = sqrt(size);
+	i = 0;
+	printf("Step: %ld\n", step);
+
+	while (array[i + step] < value)
+	{
+		printf("Value checked array[%ld] = %d\n", i, array[i]);
+		i = i + step;
+	}
+	printf("Value checked array[%ld] = %d\n", i, array[i]);
+	while (i < size)
+	{
+		printf("Value checked array[%ld] = %d\n", i, array[i]);
+		if (array[i] == value)
+			return (i);
+		if (array[i + step] < value)
+			i = i + step;
+		else
+			i++;
+	}
+
+	return (-1);
+}
