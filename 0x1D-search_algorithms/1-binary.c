@@ -18,19 +18,17 @@ int binary_search(int *array, size_t size, int value)
 		return (-1);
 
 	first = 0;
-	last = size;
+	last = (size - 1);
 	while (first <= last)
 	{
-		print_search(array, first, last);
+		print_search(array, first, (last + 1));
 		middle = (first + last) / 2;
 		if (array[middle] == value)
 			return (middle);
-		if (last - first == 1)
-			return (-1);
 		if (array[middle] > value)
 			last = middle;
 		else if (array[middle] < value)
-			first = middle;
+			first = (middle + 1);
 	}
 	return (-1);
 }
